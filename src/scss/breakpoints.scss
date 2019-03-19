@@ -1,0 +1,11 @@
+$breakpoint-sm: 48rem;
+$breakpoint-md: 64rem;
+$breakpoint-lg: 80rem;
+$breakpoint-xlg: 90rem;
+
+
+$breakpoints:
+    sm $breakpoint-sm,
+    md $breakpoint-md,
+    lg $breakpoint-lg,
+    xlg $breakpoint-xlg;

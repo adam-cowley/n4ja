@@ -1,0 +1,69 @@
+#n4ja-app-root {
+    width: 100%;
+    min-height: 100%;
+}
+
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+
+.n4ja {
+    background: #F5F7FA;
+}
+
+/* .container {
+    margin: auto;
+} */
+
+/* .n4ja-card-deck .ui.card {
+    margin: 15px;
+} 
+
+.n4ja-card .n4ja-card-overview {
+    border-bottom: 1px solid #E1E5EB;
+    padding: 12px 12px;
+}
+
+.n4ja-card .n4ja-card-overview .n4ja-id {
+    float: left;
+}
+
+.n4ja-card .n4ja-labels {
+    float: right;
+    margin-left: 6px;
+    margin-bottom: 4px;
+}
+
+.n4ja-card dl dt {
+    font-weight: 700;
+    text-align: left;
+
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8;
+    margin: 0;
+    padding: 12px 12px 6px;
+}
+
+.n4ja-card dl dd {
+    text-align: left;
+
+    width: 100%;
+    margin: 0;
+    padding: 6px 12px;
+    color: #536574;
+    font-size: 14px;
+}
+
+.n4ja-card dl dd svg, 
+.n4ja-table .n4ja-value-node svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    float: left;
+}
+
+
+*/
