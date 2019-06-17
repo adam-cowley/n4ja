@@ -27,6 +27,7 @@ import CardHeader from './ui/card/Header';
 import CardBody from './ui/card/Body';
 import CardFooter from './ui/card/Footer';
 
+import Alert from './ui/Alert';
 import Action from './ui/Action';
 
 import Loading from './ui/Loading';
@@ -44,10 +45,13 @@ import Dashboard from './layout/dashboard';
 
 import Search from './pages/Search';
 import CypherTable from './query/CypherTable';
+import CypherBarTable from './query/CypherBarTable';
+import CypherComparisonBarTable from './query/CypherComparisonBarTable';
 
 import Table from './table/Table';
 import Row from './table/Row';
-// import Cell from './table/Cell';
+import BarTable from './table/BarTable';
+import ComparisonBarTable from './table/ComparisonBarTable';
 
 export {
     NodeCard,
@@ -79,11 +83,15 @@ export {
     CardFooter,
     
     CypherTable,
+    CypherBarTable,
+    CypherComparisonBarTable,
 
     Table,
     Row,
-    // Cell,
+    BarTable,
+    ComparisonBarTable,
 
+    Alert,
     Action,
 
     Login,

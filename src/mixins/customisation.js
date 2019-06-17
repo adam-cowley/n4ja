@@ -45,7 +45,6 @@ export default {
                 const combinedName = this.toComponentName(base, last);
 
                 if ( this.checkComponent( combinedName ) ) {
-                    
                     return combinedName;
                 }
     
@@ -66,5 +65,5 @@ export default {
             if ( name.includes('zn4ja-node')) console.log('>>', name)
             return typeof this.$options.components[ name ] != 'undefined';
         },
-    }
+    },
 }

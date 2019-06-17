@@ -16,6 +16,12 @@
                     <label for="port" class="sr-only">Port</label>
                     <input type="number" v-model="lport" id="port" class="form-control" placeholder="Neo4j Port" required>
                 </div>
+                <div v-else-if="hosts && hosts.length">
+                    <label for="host" class="sr-only">Host</label>
+                    <select class="ui dropdown" id="host" v-model="lhost">
+                        <option v-for="host in hosts" :key="host" :value="host" v-html="host" />
+                    </select>
+                </div>
                 <div class="full">
                     <label for="username" class="sr-only">Username</label>
                     <input v-model="lusername" id="username" class="form-control" placeholder="Username" required autofocus>
@@ -60,6 +66,10 @@ export default {
             type: String,
             description: 'Neo4j Host',
             default: 'localhost',
+        },
+        hosts: {
+            type: Array,
+            description: 'List of possible hosts',
         },
         protocol: {
             type: String,

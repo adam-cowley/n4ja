@@ -5,6 +5,7 @@
             :logo="loginLogo"
             :showHost="showHost"
             :protocol="protocol"
+            :hosts="hosts"
             :host="host"
             :port="port"
             :username="username"
@@ -96,6 +97,7 @@
             </div>
 
 
+            <slot name="footer" />
         </div>
     </div>
 </template>
@@ -141,6 +143,10 @@ export default {
             type: String,
             description: 'Neo4j Host',
             default: 'localhost',
+        },
+        hosts: {
+            type: Array,
+            description: 'Array of possible hosts',
         },
         protocol: {
             type: String,

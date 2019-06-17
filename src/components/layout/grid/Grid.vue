@@ -61,6 +61,7 @@ $gutter-height: 24px;
             @for $width from 1 through 11 {
                 &.n4ja-col-#{$width} {
                     width: calc(#{round(percentage($width/12))} - #{$gutter-width*2});
+                    flex: 0 0 calc(#{round(percentage($width/12))} - #{$gutter-width*2});
                 }
             }
 

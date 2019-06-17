@@ -30,6 +30,13 @@
                 <slot name="footer" />
             </n4ja-card-footer>
         </template>
+
+        <n4ja-alert
+            v-if="alert"
+            :type="alert.type"
+            :title="alert.title"
+            :message="alert.message"
+        />
     </n4ja-card>
 </template>
 
@@ -122,10 +129,20 @@ export default {
             default: 'View',
         },
 
+        /**
+         * alert: {
+         *    type: 'confirmation',
+         *    title: 'Confirmation',
+         *    message: 'Lorem ipsum dolla....',
+         *  }
+         */
+        // alert: [ Object, Boolean ],
+
     },
     data() {
         return {
             loading: true,
+            alert: false,
             node: {},
             details: [],
         };

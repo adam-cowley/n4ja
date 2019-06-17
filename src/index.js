@@ -6,6 +6,7 @@ import * as components from './components';
 import ProfileMixin from './mixins/profile';
 import BloomMixin from './mixins/bloom';
 import CustomisationMixin from './mixins/customisation';
+import UtilMixin from './mixins/utils';
 
 import './semantic.min.css';
 
@@ -28,12 +29,12 @@ export default {
         }
 
         Vue.use(VueNeo4j);
-        console.log(VueNeo4j);
 
         // Install Mixins
         Vue.mixin(ProfileMixin);
         Vue.mixin(BloomMixin);
         Vue.mixin(CustomisationMixin);
+        Vue.mixin(UtilMixin);
 
         const options = Object.assign({}, defaultOptions, opts);
 

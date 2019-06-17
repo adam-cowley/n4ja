@@ -190,4 +190,15 @@ export default {
         }
     }
 }
+
+.ui.card.n4ja-table-card {
+    .card-body {
+        padding: 0;
+
+        table {
+            border-radius: 0;
+            border-width: 0;
+        }
+    }
+}
 </style>

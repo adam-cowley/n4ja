@@ -89,7 +89,6 @@
                     </button>
             </n4ja-column>
         </n4ja-grid>
-
     </div>
 </template>
 

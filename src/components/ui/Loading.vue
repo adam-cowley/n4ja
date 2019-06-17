@@ -22,8 +22,6 @@ export default {
     /* width: 100%; */
     background-color: #ccc;
     border-radius: .2rem;
-    position: relative;
-
     position: fixed;
     top: 0;
     left: 0;

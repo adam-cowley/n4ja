@@ -263,17 +263,14 @@ export default {
 
     .n4ja-node-overview {
         // display: flex;
-        flex: 0 1 calc(50% - 12px);
+        flex: 0 1 50%;
         justify-content: center;
         flex-direction: column;
-        margin: 0 12px 25px 0;
+        margin: 0 0 25px;
 
-        
-
-
-        // width: 50%;
-        // float: left;
-        // padding: 18px;
+        .n4ja-node-overview {
+            padding-right: 8px;
+        }
 
         .n4ja-value-image {
             float: left;

@@ -6,13 +6,15 @@
         />
         <n4ja-card-body>
             <n4ja-loading v-if="loading" />
-            <n4ja-table v-if="records.length">
+
+            <n4ja-table v-if="!loading && records.length">
                 <thead slot="header">
                     <tr>
                         <n4ja-key
                             v-for="header in allHeaders"
                             :key="header.name"
                             :name="header.name"
+                            :class="header.class"
                             tag="th"
                         />
                     </tr>
@@ -34,7 +36,6 @@
                         v-for="action in rowActions"
                         :key="index + action.text"
                     >
-
                         <Action
                             :action="action"
                             :value="row"
@@ -213,6 +214,7 @@ export default {
         return {
             loading: false,
             records: [],
+            headers: [],
 
             skip: 0,
 
@@ -281,8 +283,16 @@ export default {
 
                         return output;
                     });
+                    this.setHeaders();
                 })
                 .then(() => this.loading = false);
+        },
+        // This was originally a computed property but for some reason it wouldn't reload
+        setHeaders() {
+            this.headers = this.result.records[0].keys.filter(a => a !== IDENTIFIER)
+                .map(name => {
+                    return { name };
+                });
         },
         previous() {
             if ( this.page > 1 ) {
@@ -294,19 +304,20 @@ export default {
         },
     },
     computed: {
-        headers() {
-            if ( this.result && this.result.records.length ) {
-                return this.result.records[0].keys.filter(a => a !== IDENTIFIER)
-                    .map(name => {
-                        return { name };
-                    });
-            }
+        // headers() {
+        //     console.log('headers done')
+        //     // if ( this.result && this.result.records.length ) {
+        //         return this.result.records[0].keys.filter(a => a !== IDENTIFIER)
+        //             .map(name => {
+        //                 return { name };
+        //             });
+        //     // }
 
-            return [];
-        },
+        //     // return [];
+        // },
         actionHeaders() {
             return this.rowActions.map(() => {
-                return { };
+                return { class: 'action' };
             });
         },
         allHeaders() {
