@@ -1,12 +1,11 @@
-import Vue from 'vue';
 import VueNeo4j from 'vue-neo4j';
 
 import * as components from './components';
 
-import ProfileMixin from './mixins/profile';
-import BloomMixin from './mixins/bloom';
-import CustomisationMixin from './mixins/customisation';
-import UtilMixin from './mixins/utils';
+// import ProfileMixin from '../_/mixins/profile';
+// import BloomMixin from '../_/mixins/bloom';
+// import CustomisationMixin from '../_/mixins/customisation';
+// import UtilMixin from '../_/mixins/utils';
 
 import './semantic.min.css';
 
@@ -19,6 +18,7 @@ const defaultOptions = {
     relationships: {},
     keys: {},
     icons: {},
+    routes: [],
 };
 
 export default {
@@ -31,10 +31,10 @@ export default {
         Vue.use(VueNeo4j);
 
         // Install Mixins
-        Vue.mixin(ProfileMixin);
-        Vue.mixin(BloomMixin);
-        Vue.mixin(CustomisationMixin);
-        Vue.mixin(UtilMixin);
+        // Vue.mixin(ProfileMixin);
+        // Vue.mixin(BloomMixin);
+        // Vue.mixin(CustomisationMixin);
+        // Vue.mixin(UtilMixin);
 
         const options = Object.assign({}, defaultOptions, opts);
 
@@ -47,4 +47,4 @@ export default {
             }
         };
     },
-}
+};

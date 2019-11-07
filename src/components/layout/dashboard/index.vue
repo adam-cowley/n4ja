@@ -58,7 +58,7 @@
                             </ul>
                         </slot>
                     </nav>
-                    
+
                     <!-- <div class="spacer" /> -->
 
                     <nav class="n4ja-navigation-right">
@@ -92,10 +92,9 @@
                 </slot>
             </div>
 
-            <div class="main">
+            <n4ja-router>
                 <slot />
-            </div>
-
+            </n4ja-router>
 
             <slot name="footer" />
         </div>
@@ -175,22 +174,22 @@ export default {
         },
 
         /**
-         * [ { to: { name: 'Home' }, title: 'Home', } ],  
+         * [ { to: { name: 'Home' }, title: 'Home', } ],
          */
         leftNav: {
             type: Array,
             description: 'Links to display on the left',
-            default: [],
+            default: () => [],
         },
         rightNav: {
             type: Array,
             description: 'Links to display on the left',
-            default: [],
+            default: () => [],
         },
         sideNav: {
             type: Array,
             description: 'Links to display in sidebar',
-            default: [],
+            default: () => [],
         },
 
         logo: {
@@ -201,7 +200,7 @@ export default {
             type: Boolean,
             default: false,
         },
-        
+
     },
 
     computed: {
@@ -212,7 +211,7 @@ export default {
             return this.sidebar || this.sideNav.length
         },
     },
-    
+
 };
 </script>
 
@@ -280,8 +279,6 @@ $content-width: 71rem;
 
 }
 
-
-
 .n4ja-navigation {
     border-width: 0;
     border: 0px none;
@@ -294,7 +291,7 @@ $content-width: 71rem;
     right: 0;
     height: $header-height;
     padding: $header-padding $header-padding ($header-padding - $navigation-links-active-border-width);
-    z-index: 2000;
+    z-index: 10000;
 
     .n4ja-navigation-container {
         display: flex;
@@ -320,7 +317,7 @@ $content-width: 71rem;
             ul {
                 justify-content: flex-end;
             }
-            
+
         }
 
         ul {
@@ -372,7 +369,7 @@ $content-width: 71rem;
 
     padding-top: $content-padding;
 
-    
+
     @media all and (max-width: 48rem) {
         width: $sidebar-width-collapsed !important;
 
@@ -380,7 +377,7 @@ $content-width: 71rem;
             display: none;
         }
     }
-    
+
     ul {
         margin: 0;
         padding: 0;
@@ -405,7 +402,7 @@ $content-width: 71rem;
                 &.router-link-active {
                     border-color: $sidebar-links-hover;
                 }
-                
+
                 .icon {
                     display: flex;
                     flex: 0;
