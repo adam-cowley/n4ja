@@ -1,5 +1,7 @@
-import Router from './Router';
+// Router
+import Router from './router/Router';
 
+// Layouts
 import Login from './layout/Login';
 import Desktop from './layout/desktop/Desktop';
 import Pane from './layout/desktop/sidebar/Pane';
@@ -8,16 +10,46 @@ import Tab from './layout/desktop/sidebar/Tab';
 
 import Dashboard from './layout/dashboard';
 
-import Children from './Children';
 
+// UI
 import Debug from './Debug';
 import Loading from './ui/Loading';
 import Grid from './layout/grid/Grid';
 import Column from './layout/grid/Column';
 
+import Card from './ui/card/Card';
+import CardHeader from './ui/card/Header';
+import CardBody from './ui/card/Body';
+import CardFooter from './ui/card/Footer';
+
+// Search Results & Node Overviews
+import NodeOverview from './node/Overview';
+import NodeDetails from './node/Details';
+
+import RelationshipOverview from './relationship/Overview';
+import RelationshipDetails from './relationship/Details';
+
+// Generic Entity Display Components
+// TODO: Needs to be renamed from 'profile'
 import ProfileHeader from './profile/Header';
-import ProfileColumns from './profile/Columns';
-import ProfileDetails from './profile/Details';
+import ProfilePicture from './profile/Picture';
+import ProfileDetail from './profile/Detail';
+
+import Key from './profile/Key';
+import Value from './profile/Value';
+
+import Map from './map/index'
+
+// Forms
+import Autocomplete from './form/Autocomplete';
+
+
+// Profile
+// import Children from './Children';
+// import ProfileCover from './profile/Cover';
+// import ProfileColumns from './profile/Columns';
+// import ProfileDetails from './profile/Details';
+
 
 
 // import NodeCard from './node/Card';
@@ -43,16 +75,12 @@ import ProfileDetails from './profile/Details';
 // import ValueNode  from './properties/values/Node';
 // import ValueImage from './properties/values/Image';
 
-import Card from './ui/card/Card';
-import CardHeader from './ui/card/Header';
-import CardBody from './ui/card/Body';
-import CardFooter from './ui/card/Footer';
 
 // import Alert from './ui/Alert';
 import Action from './ui/Action';
 
 
-
+import Neo4jLogo from './Neo4jLogo';
 
 
 
@@ -69,8 +97,10 @@ import Action from './ui/Action';
 // import ComparisonBarTable from './table/ComparisonBarTable';
 
 export {
+    // Router
     Router,
 
+    // Layouts
     Login,
     Desktop,
     Pane,
@@ -78,16 +108,40 @@ export {
     Tab,
     Dashboard,
 
-    Children,
-
+    // UI
     Debug,
     Loading,
     Grid,
     Column,
 
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Action,
+
+    // Search Results & Node Overviews
+    NodeOverview,
+    NodeDetails,
+
+    RelationshipOverview,
+    RelationshipDetails,
+
     ProfileHeader,
-    ProfileColumns,
-    ProfileDetails,
+    ProfilePicture,
+    ProfileDetail,
+
+    Key,
+    Value,
+
+    Map,
+
+    Autocomplete,
+
+    // Children,
+    // ProfileCover,
+    // ProfileColumns,
+    // ProfileDetails,
 
     // NodeCard,
     // NodeCardHeader,
@@ -112,10 +166,7 @@ export {
     // ValueNode,
     // ValueImage,
 
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
+
 
     // CypherTable,
     // CypherBarTable,
@@ -127,7 +178,7 @@ export {
     // ComparisonBarTable,
 
     // Alert,
-    Action,
+    
 
     // Login,
     // Desktop,
@@ -141,5 +192,6 @@ export {
 
     // Search,
 
+    Neo4jLogo,
 
 };

@@ -5,7 +5,9 @@
 
             <span class="badge badge-pill ui label label-danger danger count" v-if="count" v-html="count" />
         </component>
-
+        <slot />
+        <slot name="actions" />
+        
         <!-- TODO: Actions/Dismiss -->
     </div>
 </template>

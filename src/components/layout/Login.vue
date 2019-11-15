@@ -2,9 +2,12 @@
     <div id="login">
         <form class="login-form" @submit.prevent="handleLogin">
             <div class="ui form">
-                <slot name="logo">
-                    <component v-if="logo" :is="logo" />
-                </slot>
+                <div class="logo">
+                    <slot name="login-logo">
+                        <component v-if="logo" :is="logo" />
+                        <neo4j-logo v-else />
+                    </slot>
+                </div>
 
                 <div class="alert alert-danger" v-if="error" v-html="error" />
 
@@ -30,7 +33,7 @@
                     <label for="inputPassword" class="sr-only">Password</label>
                     <input v-model="lpassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 </div>
-                <div class="full">
+                <div class="full submit">
                     <button class="ui button primary btn btn-lg btn-primary btn-block" type="submit" :disabled="loading">
                         {{ loading ? this.loadingText : this.signInText }}
                     </button>
@@ -117,7 +120,11 @@ export default {
                     return this.$neo4j.run('MATCH (n) RETURN count(n)')
                         .then(() => this.onConnect(driver));
                 })
-                .catch(() => this.error = 'Login Failed.  Please try again.')
+                .catch(e => {
+                    this.error = e.message;
+
+                    if ( typeof this.onConnectError === 'function' ) this.onConnectError(e);
+                })
                 .then(() => this.loading = false);
         }
     },
@@ -131,23 +138,42 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    background: #f2f2f2;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     .login-form {
         width: 100%;
         max-width: 330px;
-        padding: 16px;
+        padding: 32px 16px 16px;
         margin: 60px auto;
         background: #fff;
         border-radius: 8px;
+        box-shadow: 0 2px 10px 0 #E1E5EB !important;
 
-        img {
-            display: block;
-            width: 60%;
-            margin: 26px auto 41px !important;
+        .logo {
+            img {
+                display: block;
+                width: 60%;
+                margin: 26px auto 42px !important;
+            }
+
+            .neo4j-logo {
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin: 12px auto 26px !important;
+            }
         }
 
         div {
-            margin: 0 0 8px;
+            margin: 0 0 12px;
+
+            &.form, &.submit {
+                margin: 0;
+            }
         }
 
         .host, .port {
@@ -189,7 +215,7 @@ export default {
     */
 }
 #login .login-form button {
-    margin: 8px 0 12px;
+    margin: 8px 0;
     padding: 16px 0;
     width: 100%;
     display: block !important;
@@ -199,8 +225,8 @@ export default {
     margin-bottom: 10px;
 }
 
-.col-xs-8 {width: 60%}
-.col-xs-4 {width: 40%}
+// .col-xs-8 {width: 60%}
+// .col-xs-4 {width: 40%}
 
 /* .sr-only {
     display: none;

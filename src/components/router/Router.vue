@@ -24,13 +24,6 @@ export default {
         }) : [];
 
         this.$router.addRoutes(routes);
-
-        this.routes = routes.map(r => r.name);
     },
-    data() {
-        return {
-            routes: [],
-        }
-    }
 }
 </script>

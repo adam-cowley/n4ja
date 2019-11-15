@@ -1,6 +1,6 @@
 <template>
     <div>
-        <pre>!! component not found: {{ config.type }}</pre>
+        <pre>!! component not found: n4ja-profile-{{ config.type }}</pre>
         <div>
             <b>Config:</b> <pre>{{ config }}</pre>
         </div>

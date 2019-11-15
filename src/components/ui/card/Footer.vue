@@ -1,5 +1,6 @@
 <template>
     <div class="n4ja-card-footer n4ja-card-footer-actions">
+        <slot />
         <Action
             v-for="action in actions"
             :key="action.name"

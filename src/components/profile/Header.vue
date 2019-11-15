@@ -1,66 +1,36 @@
 <template>
-    <div
-        class="n4ja-profile-header"
-    >
-        <div class="cover" :style="headerStyle()" />
-        <n4ja-grid>
-            <n4ja-column columns="3">
-                <div
-                    class="picture"
-                    :style="pictureStyle()"
-                />
-            </n4ja-column>
-            <n4ja-column columns="9" class="details-container">
-                <div class="details">
-                    <h1>{{ name }}</h1>
-                    <p v-if="caption" class="caption">{{ caption }}</p>
-                </div>
-            </n4ja-column>
-        </n4ja-grid>
-    </div>
+    <component :is="getContextComponent()" class="n4ja-profile-header">
+        <n4ja-profile-picture v-if="picture" class="picture-container" :context="context" :picture="picture" />
+        
+        <div class="details">
+            <component v-if="name" :is="nameTag" v-html="name" class="name" />
+            <component v-if="caption" :is="captionTag" v-html="caption" class="caption" />
+        </div>
+    </component>
 </template>
 
 <script>
-import jsonpath from 'jsonpath';
-
-const defaults = {
-    name: false,
-    caption: false,
-    picture: false,
-    cover: false,
-};
-
 export default {
     name: 'n4ja-profile-header',
     props: {
-        config: Object,
-        data: Object,
-    },
-    data() {
-        return Object.entries( this.config.data ).map(([ key, path ]) => {
-            if ( !Array.isArray(path) ) {
-                path = [ path ];
-            }
-
-            const value = path.map(query => jsonpath.query(this.data, query) ).join( this.config.join || ' ' );
-
-            return [ key, value ];
-        }).reduce((acc, [ key, value ]) => {
-            acc[ key ] = value;
-
-            return acc;
-        }, defaults);
-    },
-    methods: {
-        headerStyle() {
-            return {
-                'background-image': `url( ${this.cover ? this.cover : 'none'})`,
-            };
+        context: {
+            type: [ Array, String, ],
+            description: 'The context in which this node is being displayed',
         },
-        pictureStyle() {
-            return {
-                'background-image': `url( ${this.picture ? this.picture : 'none'})`,
-            };
+
+        name: [ String, Boolean, ],
+        caption: [ String, Boolean, ],
+        picture: [ String, Boolean, ],
+
+        nameTag: {
+            type: String,
+            description: 'HTML element for the name',
+            default: 'h3',
+        },
+        captionTag: {
+            type: String,
+            description: 'The HTML element for the caption',
+            default: 'p',
         },
     },
 }
@@ -68,66 +38,36 @@ export default {
 
 <style lang="scss">
 .n4ja-profile-header {
+    display: flex;
+    justify-content: flex-start;
 
-    margin-top: -30px;
-    padding: 60px 0;
+    .picture-container {
+        display: flex;
+        flex: 0;
+        width: 24px;
+        margin: 6px 12px 0 0;
 
-    background-color: rgba(0, 140, 193, .4);
-
-    position: relative;
-
-    .details-container {
-        flex-direction: column;
-
-        .details {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-
-            h1 {
-                flex: 0 0 auto;
-                align-items: flex-end;
-                margin-bottom: 4px;
-            }
-
-            p {
-               margin-bottom: 24px;
-            }
+        .picture {
+            height: 24px;
+            width: 24px;
+            display: block;
+            background: #ccc;
+            border-radius: 50%;
         }
     }
 
-    .cover {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .details {
+        flex: 0 1 auto;
 
-        // opacity: .3;
-        z-index: -1;
+        .name {
+            font-size: 16px;
+            margin: 0;
+        }
 
-        background-size: cover;
-        background-position: center;
-    }
-
-    .picture {
-        width: 160px;
-        height: 160px;
-        margin: auto;
-
-        background: #f2f2f2;
-        background-size: cover;
-        background-position: center;
-
-        border: 2px solid #fff;
-        border-radius: 50%;
-        box-shadow: 0 0 6px rgba(0, 0, 0, .4);
-
-        text-indent: -9999px;
-    }
-
-    h1 {
-        margin-bottom: 6px;
+        .caption {
+            margin-bottom: 0;
+            color: #ccc;
+        }
     }
 }
 </style>
