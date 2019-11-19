@@ -1,15 +1,10 @@
-import VueNeo4j from 'vue-neo4j';
+import VueNeo4j from 'vue-neo4j'
 
 import * as components from './components';
 
-// import ProfileMixin from '../_/mixins/profile';
-// import BloomMixin from '../_/mixins/bloom';
-// import CustomisationMixin from '../_/mixins/customisation';
-// import UtilMixin from '../_/mixins/utils';
+import DataMixin from './mixins/data'
 
-import DataMixin from './mixins/data';
-
-import './semantic.min.css';
+import './scss/n4ja.scss';
 
 // Defaults
 const N4ja = {

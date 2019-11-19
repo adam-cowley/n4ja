@@ -105,28 +105,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-.n4ja-details-container {
-    border-top: 1px solid #eee;
-    margin-top: 12px;
-    // padding-top: 12px;
-
-    dl {
-
-        dt {
-            color: #888;
-            text-transform: uppercase;
-            border-bottom: 1px solid #eee;
-
-            padding: 0 0 4px;
-            margin-bottom: 8px;
-        }
-
-
-        dd {
-            margin: 0 0 4px;
-        }
-    }
-}
-</style>

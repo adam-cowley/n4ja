@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import VueRouter from 'vue-router';
-import N4jaRoute from './Route';
+import VueRouter from 'vue-router'
+import N4jaRoute from './Route'
 
 export default {
     name: 'n4ja-router',

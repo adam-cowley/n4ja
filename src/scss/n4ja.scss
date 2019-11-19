@@ -1,0 +1,815 @@
+@import "variables", "theme", "mixins";
+
+/**
+ * Semantic UI
+ */
+@import "../css/semantic.min.css";
+
+body {
+    background: $body-background;
+}
+
+/**
+ * Desktop Layout
+ */
+
+@import "../css/Desktop.css";
+
+.n4ja-layout-desktop {
+    .n4ja-pane {
+        color: #fff;
+
+        .n4ja-pane-header {
+            padding: 20px 15px 20px;
+            border-bottom: 1px solid #5d6370;
+            margin-bottom: 10px;
+
+            .n4ja-pane-header-title {
+                color: #fff;
+                font-size: 19.2px;
+                font-weight: bold;
+            }
+
+            .n4ja-pane-content {
+                display: flex;
+                flex: 1;
+                padding: 0 15px;
+                width: 100%;
+                flex-direction: column;
+
+                
+                .ui.form .field>label {
+                    color: #fff; 
+                    padding: 4px 0;
+                }
+            }
+        }
+
+        .n4ja-pane-footer {
+            display: flex;
+            padding: 10px;
+            background: rgba(0,0,0,.25);
+            border-top: 1px solid #5d6370;
+            border-radius: 3px;
+            margin: 5px;
+        }
+
+        .n4ja-pane-content-spaced {
+            display: block;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #5d6370;
+            clear: both;
+
+            &:after {
+                clear: both;
+                content: "";
+                display: block;
+            }
+
+            h5 {
+                font-size: 1.2em;
+                font-weight: 700;
+            }
+        }
+
+        .n4ja-tabs-list-item {
+            span {
+                display: none;
+            }
+            a {
+                outline: none;
+            }
+        }
+    }
+
+    .n4ja-tabs-list-item {
+        svg {
+            width: 28px;
+            height: 28px;
+
+            path {
+                fill: #fff;
+            }
+        }
+    }
+}
+
+/**
+ * Dashboard
+ */
+.n4ja-layout-dashboard {
+    .main {
+        padding-top: $content-padding;
+    }
+
+    &.no-sidebar {
+        .container, .n4ja-navigation-container {
+            margin: auto;
+            padding: 0 $header-padding-horizontal;
+            max-width: $content-width;
+        }
+
+        .main .container {
+            padding: $header-padding;
+        }
+    }
+
+    &.with-sidebar {
+        .n4ja-navigation-container {
+            padding: 0 $header-padding-horizontal;
+        }
+
+        .main {
+            margin-left: $sidebar-width;
+
+            @media all and (max-width: 48rem) {
+                margin-left: $sidebar-width-collapsed;
+            }
+
+            .container {
+                max-width: 1080px;
+            }
+        }
+    }
+
+    .n4ja-navigation {
+        border-width: 0;
+        border: 0px none;
+        background-color: $navigation-background;
+
+        @include shadow($navigation-shadow);
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: $header-height;
+        padding: $header-padding $header-padding ($header-padding - $navigation-links-active-border-width);
+        z-index: 10000;
+
+        .n4ja-navigation-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .n4ja-brand {
+                flex: 0;
+
+                .neo4j-logo {
+                    width: 44px;
+                    height: 44px;
+                    margin-right: 12px;
+                }
+            }
+
+            .n4ja-navigation-left {
+                flex: 1;
+            }
+
+            .n4ja-navigation-right {
+                flex: 1;
+
+                ul {
+                    justify-content: flex-end;
+                }
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+                justify-content: flex-start;
+
+                margin: 0;
+                padding: 0;
+
+                li {
+                    flex: 0;
+                    margin: 0 $header-padding;
+                    padding: 0;
+
+                    a {
+                        display: block;
+                        border-bottom: $navigation-links-active-border-width solid transparent;
+                        padding: 14px 0 19px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        white-space: nowrap;
+                        color: $navigation-links;
+
+                        &:hover {
+                            color: $navigation-links-hover;
+                        }
+
+                        &.active, &.router-link-exact-active {
+                            border-bottom-color: #ccc;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .n4ja-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: $sidebar-width;
+
+        background: $sidebar-background;
+        
+        @include shadow($sidebar-shadow);
+
+        padding-top: $content-padding;
+
+
+        @media all and (max-width: 48rem) {
+            width: $sidebar-width-collapsed !important;
+
+            ul li a .link {
+                display: none;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0 0 $sidebar-padding-vertical;
+                padding: 0;
+                list-style-type: none;
+
+                a {
+                    display: flex;
+                    font-weight: bold;
+                    padding: $sidebar-padding-vertical $sidebar-padding-horizontal;
+                    border-left: $sidebar-links-active-border-width solid transparent;
+
+                    color: $sidebar-links;
+
+                    &:hover {
+                        color: $sidebar-links-hover;
+                    }
+
+                    &.router-link-active {
+                        border-color: $sidebar-links-hover;
+                    }
+
+                    .icon {
+                        display: flex;
+                        flex: 0;
+                        width: 24px;
+                        margin-right: 12px;
+                        align-content: center;
+
+                        svg {
+                            display: block;
+                            margin: auto;
+                        }
+                    }
+                    .link {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** Grid */
+@import "breakpoints";
+
+
+.n4ja-layout-dashboard {
+    &.with-sidebar {
+        .container {
+            margin: $gutter-width;
+        }
+    }
+
+    .n4ja-grid {
+        display: flex;
+        margin: $gutter-width -$gutter-width;
+
+        .n4ja-column {
+            flex: 1;
+            box-sizing: border-box;
+            margin: 0 $gutter-width;
+
+            min-width: 220px;
+            
+            @for $width from 1 through 11 {
+                &.n4ja-col-#{$width} {
+                    width: calc(#{round(percentage($width/12))} - #{$gutter-width*2});
+                    flex: 0 0 calc(#{round(percentage($width/12))} - #{$gutter-width*2});
+                }
+            }
+
+            .card {
+                margin-bottom: $gutter-height;
+            }
+        }
+
+        @media all and (max-width: $breakpoint-sm) {
+            flex-direction: column;
+
+            .n4ja-column {
+                min-width: calc(100% - #{$gutter-width*2});
+                max-width: 320px;
+            }
+        }
+
+        &.deck {
+            display: flex;
+            // flex-direction: row;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        
+            .n4ja-column {
+                display: flex;
+                // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+                // flex: 1 0 0%;
+                flex: 1;
+                flex-direction: column;
+                flex-wrap: wrap;
+                // padding: 12px;
+        
+                .n4ja-card {
+                    flex: 1;
+        
+                    display: flex;
+        
+                    .node-details {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+/** Login */
+#login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $login-background;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    .login-form {
+        width: 100%;
+        max-width: 330px;
+        padding: $padding-xl $padding-md $padding-md;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: $border-radius-lg;
+        
+        @include shadow($login-shadow, $login-shadow-x, $login-shadow-y, $login-shadow-spread);
+
+        .logo {
+            img {
+                display: block;
+                width: 60%;
+                margin: 26px auto 42px !important;
+            }
+
+            .neo4j-logo {
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin: $padding-md auto $padding-md*2 !important;
+            }
+        }
+
+        div {
+            margin: 0 0 12px;
+
+            &.form, &.submit {
+                margin: 0;
+            }
+
+            label {
+                display: none;
+            }
+        }
+
+        .host, .port {
+            float: left;
+        }
+        .host {
+            width: 70%;
+
+            input {
+                border-right: 0px none;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+        .port {
+            width: 30%;
+            input {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+        .full {
+            clear: both;
+        }
+
+        button {
+            margin: $padding-xs 0;
+            justify-content: center;;
+            width: 100%;
+            padding: $padding-lg 0;
+        }
+    }
+
+}
+
+
+/** Cards */
+.n4ja-card {
+    border-width: 0;
+    border: 0px none !important;
+    background-color: $card-background;
+
+    @include shadow();
+
+    margin: $padding-md 0;
+
+    display: flex;
+    flex-direction: column;
+
+    width: auto !important;
+    max-width: auto !important;
+
+    .n4ja-card-header {
+        padding: $padding-lg $padding-md;
+        background: $card-header-background;
+        color: $card-header-colour;
+    }
+
+    .card-body {
+        flex: 1;
+        padding: $padding-md;
+
+        dl {
+            width: 100%;
+            
+            dt {
+                font-weight: 700;
+                text-align: left;
+
+                width: 100%;
+                border-bottom: 1px solid $shadow;
+                color: $text-accent;
+                margin: 0;
+                padding: $padding-sm 0;
+            }
+
+            dd {
+                text-align: left;
+
+                width: 100%;
+                margin: 0;
+                padding: $padding-sm 0;
+            }
+        }
+
+
+    }
+
+    .n4ja-card-footer {
+        flex: 0;
+
+        flex: 0 1 auto;
+        width: 100%;
+        background: $card-footer-background;
+        color: $card-footer-colour;
+        padding: $padding-lg $padding-md;
+
+        border-top: 1px solid $card-shadow;
+        margin-top: 12px;
+
+        &.n4ja-card-footer-actions {
+            display: flex;
+
+            button, a {
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+                margin: 0 4px;
+
+                &:first-child {
+                    margin-left: 12px;
+                }
+                &:last-child {
+                    margin-right: 12px;
+                }
+
+                &.no-flex {
+                    flex: 0;
+                }
+            }
+
+            .btn-pagination {
+                flex: 0;
+            }
+        }
+    }
+
+    &.n4ja-table-card {
+        .card-body {
+            padding: 0;
+    
+            table {
+                border-radius: 0;
+                border-width: 0;
+            }
+        }
+    }
+}
+
+
+.n4ja-profile-header {
+    display: flex;
+    justify-content: flex-start;
+
+    .picture-container {
+        display: flex;
+        flex: 0;
+        width: 24px;
+        margin: 6px 12px 0 0;
+
+        .picture {
+            height: 24px;
+            width: 24px;
+            display: block;
+            background: #ccc;
+            border-radius: 50%;
+        }
+    }
+
+    .details {
+        flex: 0 1 auto;
+
+        h1, h2, h3 {
+            font-size: 16px;
+            margin: 0 0 $padding-xs;
+        }
+
+        .caption {
+            margin-bottom: 0;
+            color: #ccc;
+        }
+    }
+}
+
+.n4ja-details-container {
+    dl {
+        dt {
+            color: $text-accent;
+        }
+
+        dd {
+            margin: 0 0 $padding-sm;
+        }
+    }
+}
+
+
+
+
+/** Loading Indicator */
+.n4ja-loading {
+    background-color: $loading-background;
+    border-radius: .2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 5000;
+    
+    &:before, &:after {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        top: 50%;
+        margin-top:-40px;
+        margin-left:-40px;
+    
+        background: $loading-colour;
+    
+        animation: make-it-pop 1.2s infinite;
+    }
+    
+    &:after {
+        animation-delay: .5s;
+    }
+    
+    span {
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin-top: 60px;
+        margin-left: 0;
+        text-align: center;
+    
+        color: $loading-colour;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+
+@keyframes make-it-pop { 
+    0% {
+        /* @include pop(0, 0); */
+        height: 0;
+        width: 0;
+        opacity: 0;
+        margin-left: 0;
+        margin-top: 0;
+    }
+    50% {
+        /* @include pop(80, .4); */
+        height: 40px;
+        width: 40px;
+        opacity: .4;
+        margin-left: -20px;
+        margin-top: -20px;
+    }
+    100% {
+        /* @include pop(60, 0); */
+        height: 60px;
+        width: 60px;
+        opacity: 0;
+        margin-left: -30px;
+        margin-top: -30px;
+    }
+}
+
+/** Alert */
+.alert-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3000;
+    background: #333;
+    padding: $padding-md 0;
+
+    .row {
+        margin-bottom: 0;
+    }
+
+    h1 {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 3px !important;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    .close {
+        float: right;
+        font-size: $padding-md * 2;
+        padding: $padding-md !important;
+        background: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+    
+        &:hover {
+            background: transparent;
+        }
+    
+        &:active {
+            background: transparent;
+        }
+    }
+
+    &.alert-info {
+        background: $alert-info-background;
+        color: $alert-info-colour;
+
+        .close {
+            border-color: $alert-info-colour;
+            color: $alert-info-colour;
+        }
+    }
+
+    &.alert-warning {
+        background: $alert-warning-background;
+        color: $alert-warning-colour;
+
+        .close {
+            border-color: $alert-warning-colour;
+            color: $alert-warning-colour;
+        }
+    }
+
+    &.alert-danger {
+        background: $alert-danger-background;
+        color: $alert-danger-colour;
+
+        .close {
+            border-color: $alert-danger-colour;
+            color: $alert-danger-colour;
+        }
+    }
+
+    &.alert-success {
+        background: $alert-success-background;
+        color: $alert-success-colour;
+
+        .close {
+            border-color: $alert-success-colour;
+            color: $alert-success-colour;
+        }
+    }
+
+}
+
+
+
+/** Map */
+.n4ja-map .map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+}
+
+/** Autocomplete */
+.n4ja-autocomplete {
+    position: relative;
+
+    &.has-suggestions input {
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: -1px 0 0;
+        padding: 0;
+
+        background: $card-background;
+        border: 1px solid $shadow;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+
+        li {
+            padding: 12px;
+            margin: 0;
+            list-style-type: none;
+            border-bottom: 1px solid $shadow;
+
+            &:hover {
+                background: $shadow;
+            }
+        }
+    }
+
+    .selected {
+        display: flex;
+        justify-content: space-between;
+
+        .n4ja-node-overview {
+            flex: 0 1 auto;
+        }
+
+        .remove {
+            flex: 0;
+            width: 24px !important;
+            padding: 0;
+            border: 0px none;
+            background: transparent;
+        }
+    }
+
+   
+}

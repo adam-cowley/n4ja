@@ -1,4 +1,4 @@
-import jsonpath from 'jsonpath';
+import jsonpath from 'jsonpath'
 
 
 const SEPARATOR = '-'
@@ -19,9 +19,20 @@ export default {
                 }
 
                 const value = path.map(query => {
-                    if ( typeof query !== 'string' || query.substr(0, 1) != '$' ) return query;
+                    if ( typeof query === 'function' ) {
+                        return query(data)
+                    }
+                    else if ( typeof query === 'string' ) {
+                        // jsonpath?
+                        if ( query.substr(0, 1) === '$' ) {
+                            return jsonpath.query(data, query) 
+                        }
 
-                    return jsonpath.query(data, query) 
+                        // Return a simple property
+                        return data[ query ]
+                    }
+                    
+                    return '??'
                 }).join(join);
 
                 this[ key ] = value;
@@ -84,8 +95,5 @@ export default {
                 'background-image': this.picture ? `url( ${this.picture})` : 'none',
             };
         },
-
-
-
     }
 }

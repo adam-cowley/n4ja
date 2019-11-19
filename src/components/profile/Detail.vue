@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import jsonpath from 'jsonpath';
+import jsonpath from 'jsonpath'
 
 export default {
     name: 'n4ja-profile-detail',

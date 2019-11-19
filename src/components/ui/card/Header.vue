@@ -27,8 +27,3 @@ export default {
 }
 </script>
 
-<style>
-.count {
-    float: right;
-}
-</style>

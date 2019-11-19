@@ -37,10 +37,7 @@
 </template>
 
 <script>
-// import icons from '@/icons';
-// import Pane from './Pane';
-
-import Tab from './Tab';
+import Tab from './Tab'
 
 export default {
     name: 'n4ja-sidebar',
@@ -72,14 +69,3 @@ export default {
     },
 };
 </script>
-
-<style>
-.n4ja-tabs-list-item svg {
-    width: 28px;
-    height: 28px;
-}
-
-.n4ja-tabs-list-item svg path {
-    fill: #fff;
-}
-</style>

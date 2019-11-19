@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Action from './../../ui/Action';
+import Action from './../../ui/Action'
 
 export default {
     name: 'N4jaCardFooter',

@@ -1,0 +1,55 @@
+/** Variables */
+$padding-xs: 4px;
+$padding-sm: 8px;
+$padding-md: 12px;
+$padding-lg: 18px;
+$padding-xl: 24px;
+$padding-xxl: 64px;
+
+$border-radius-sm: 2px;
+$border-radius-md: 3px;
+$border-radius-lg: 6px;
+
+$chart-breakpoint-lg: 1200px;
+$chart-breakpoint-md: 991px;
+$chart-breakpoint-sm: 720px;
+$chart-breakpoint-xs: 480px;
+
+$font-size-xxxl: 48px;
+$font-size-xxl: 34px;
+$font-size-xl: 22px;
+$font-size-lg: 18px;
+$font-size-md: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 8px;
+
+/** Dashboard **/
+
+$header-height: $padding-xxl;
+$header-padding: $padding-sm;
+$header-padding-horizontal: $padding-lg;
+
+
+$content-padding: $header-height + ($header-padding * 4);
+
+$navigation-links: rgba(0,0,0,.8);
+$navigation-links-hover: lighten($navigation-links, 10%);
+$navigation-links-active: darken($navigation-links, 10%);
+$navigation-links-active-border: darken($navigation-links, 10%);
+$navigation-links-active-border-width: 4px;
+
+$sidebar-padding-vertical: 6px;
+$sidebar-padding-horizontal: 16px;
+$sidebar-width: 240px;
+$sidebar-width-collapsed: 60px;
+
+$sidebar-links: rgba(0, 0, 0, 0.6);
+$sidebar-links-hover: lighten($sidebar-links, 20%);
+$sidebar-links-active: darken($sidebar-links, 10%);
+$sidebar-links-active-border: darken($sidebar-links, 10%);
+$sidebar-links-active-border-width: 4px;
+
+$content-width: 71rem;
+
+$gutter-width: $padding-md;
+$gutter-height: $padding-lg;

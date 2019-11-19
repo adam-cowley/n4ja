@@ -40,13 +40,3 @@ export default {
     },
 }
 </script>
-
-<style>
-/* TODO: Tooltips */
-.n4ja-tabs-list-item span {
-    display: none;
-}
-.n4ja-tabs-list-item a {
-    outline: none;
-}
-</style>

@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import jsonpath from 'jsonpath';
+import jsonpath from 'jsonpath'
 
 const defaults = {
     name: false,
@@ -50,7 +50,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-
-</style>

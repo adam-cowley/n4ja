@@ -45,7 +45,7 @@
 
 <script>
 export default {
-    name: 'N4jaLogin',
+    name: 'n4ja-login',
     props: {
         onConnect: Function,
         onConnectError: Function,
@@ -130,106 +130,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-#login {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #f2f2f2;
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    .login-form {
-        width: 100%;
-        max-width: 330px;
-        padding: 32px 16px 16px;
-        margin: 60px auto;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px 0 #E1E5EB !important;
-
-        .logo {
-            img {
-                display: block;
-                width: 60%;
-                margin: 26px auto 42px !important;
-            }
-
-            .neo4j-logo {
-                display: block;
-                width: 64px;
-                height: 64px;
-                margin: 12px auto 26px !important;
-            }
-        }
-
-        div {
-            margin: 0 0 12px;
-
-            &.form, &.submit {
-                margin: 0;
-            }
-        }
-
-        .host, .port {
-            float: left;
-        }
-        .host {
-            width: 70%;
-
-            input {
-                border-right: 0px none;
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-        }
-        .port {
-            width: 30%;
-            input {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-            }
-        }
-        .full {
-            clear: both;
-        }
-    }
-
-}
-
-
-
-
-#login .login-form label {
-    display: none;
-    /*
-    display: block;
-    padding: 0 12px 4px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    */
-}
-#login .login-form button {
-    margin: 8px 0;
-    padding: 16px 0;
-    width: 100%;
-    display: block !important;
-    /* text-align: center; */
-}
-.login-form .row {
-    margin-bottom: 10px;
-}
-
-// .col-xs-8 {width: 60%}
-// .col-xs-4 {width: 40%}
-
-/* .sr-only {
-    display: none;
-} */
-</style>
-

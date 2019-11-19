@@ -10,8 +10,8 @@ npm link n4ja
 ```
 
 ```javascript
-import Vue from 'vue';
-import N4ja from 'n4ja';
+export { default as Vue } from 'vue'
+export { default as N4ja } from 'n4ja'
 
 // ...
 

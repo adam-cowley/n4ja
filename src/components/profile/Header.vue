@@ -35,39 +35,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-.n4ja-profile-header {
-    display: flex;
-    justify-content: flex-start;
-
-    .picture-container {
-        display: flex;
-        flex: 0;
-        width: 24px;
-        margin: 6px 12px 0 0;
-
-        .picture {
-            height: 24px;
-            width: 24px;
-            display: block;
-            background: #ccc;
-            border-radius: 50%;
-        }
-    }
-
-    .details {
-        flex: 0 1 auto;
-
-        .name {
-            font-size: 16px;
-            margin: 0;
-        }
-
-        .caption {
-            margin-bottom: 0;
-            color: #ccc;
-        }
-    }
-}
-</style>
