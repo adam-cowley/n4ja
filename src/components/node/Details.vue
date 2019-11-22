@@ -1,5 +1,5 @@
 <template>
-    <component :is="getContextComponent()" class="n4ja-node-details">
+    <component :is="getContextComponent()" class="n4ja-node-details" :data-id="node.identity.toNumber()">
         <n4ja-node-overview
             :context="context"
             :node="node"

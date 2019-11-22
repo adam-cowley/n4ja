@@ -22,7 +22,10 @@
 </template>
 
 <script>
+import { getMap } from './mapUtils'
+
 const srids = [ 4979, 4326, ];
+
 
 export default {
     name: 'n4ja-map-layer',
@@ -67,7 +70,14 @@ export default {
             this.currentMarkers = []
             this.currentPolylines = []
         },
+
+        fitBounds() {
+            getMap(this).fitBounds( this.currentMarkers.map(marker => marker.point) )
+        },
+
         addLayers() {
+            this.clearMap();
+
             if ( !this.result ) return;
 
             // Add new markers
@@ -95,6 +105,8 @@ export default {
                     }
                 })
             })
+
+            this.fitBounds();
         },
 
         addNodeMarker(entity) {
@@ -128,6 +140,11 @@ export default {
             return Object.entries(obj.properties).filter(([key, value]) => value.hasOwnProperty('srid') && srids.includes( value.srid.toNumber() ))
                 .map(([key, value]) => [ value.y, value.x ])
                 .pop()
+        },
+    },
+    watch: {
+        result() {
+            this.addLayers();
         },
     },
 }

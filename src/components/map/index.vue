@@ -2,29 +2,21 @@
     <div class="n4ja-map">
         <div id="map" class="map-container" />
         <slot />
-            <!-- <n4ja-map-layer 
-                v-if="result"
-                :map="map"
-                :result="result"
-                :markers="markers"
-                :polylines="polylines"
+        <n4ja-map-layer 
+            v-if="result"
+            :result="result"
+            :markers="markers"
+            :polylines="polylines"
 
-                :onMarkerClick="onMarkerClick"
-                :onPolylineClick="onPolylineClick"
-            /> -->
+            :onMarkerClick="onMarkerClick"
+            :onPolylineClick="onPolylineClick"
+        />
     </div>
 </template>
 
 <script>
 import leaflet from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-
-// TODO: Configuration
-const accessToken = 'pk.eyJ1IjoiYWRhbWNvd2xleSIsImEiOiJjazJwMjEwdXgwcDE0M2dzN3k4YnExNDZpIn0.zkBLjnorMcHvyjNGIiNp3g';
-
-
-const _markers = []
-const _polylines = []
 
 export default {
     name: 'n4ja-map',

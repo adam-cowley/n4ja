@@ -3,6 +3,7 @@
         <div
             class="picture"
             :style="pictureStyle()"
+            @click.prevent="onClick"
         />
     </component>
 </template>
@@ -20,6 +21,12 @@ export default {
         picture: {
             type: [ String, Boolean, Object, ],
             description: 'Picture to display',
+        },
+
+        onClick: {
+            type: Function,
+            description: 'On Click Handler',
+            default: () => {},
         },
     },
 }

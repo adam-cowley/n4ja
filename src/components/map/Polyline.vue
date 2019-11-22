@@ -26,7 +26,7 @@ export default {
 
     },
     beforeDestroy() {
-        // getMap(this).removeLayer(this.polyline)
+        getMap(this).removeLayer(this.polyline)
     },
 }
 </script>

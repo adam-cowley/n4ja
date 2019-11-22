@@ -1,3 +1,12 @@
+/**
+ * Neo4j Brand Colours
+ */
+ $neo4j-green: #65b144;
+ $neo4j-blue: #008cc1;
+ $neo4j-purple: #DB96F7;
+ $neo4j-yellow: #E9BA3B;
+ $neo4j-orange: #f58220;
+
 /** Variables */
 $padding-xs: 4px;
 $padding-sm: 8px;
@@ -28,7 +37,6 @@ $font-size-xs: 8px;
 $header-height: $padding-xxl;
 $header-padding: $padding-sm;
 $header-padding-horizontal: $padding-lg;
-
 
 $content-padding: $header-height + ($header-padding * 4);
 

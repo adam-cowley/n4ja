@@ -1,10 +1,9 @@
 <template>
     <component :is="getContextComponent()" class="n4ja-profile-header">
-        <n4ja-profile-picture v-if="picture" class="picture-container" :context="context" :picture="picture" />
-        
+        <n4ja-profile-picture v-if="picture" class="picture-container" :context="context" :picture="picture" :onClick="onClick" />
         <div class="details">
-            <component v-if="name" :is="nameTag" v-html="name" class="name" />
-            <component v-if="caption" :is="captionTag" v-html="caption" class="caption" />
+            <component v-if="name" :is="nameTag" v-html="name" class="name" @click.prevent="onClick" />
+            <component v-if="caption" :is="captionTag" v-html="caption" class="caption" @click.prevent="onClick" />
         </div>
     </component>
 </template>
@@ -19,7 +18,10 @@ export default {
         },
 
         name: [ String, Boolean, ],
-        caption: [ String, Boolean, ],
+        caption: {
+            type: [ String, Boolean, ],
+            default: () => [],
+        },
         picture: [ String, Boolean, ],
 
         nameTag: {
@@ -32,6 +34,12 @@ export default {
             description: 'The HTML element for the caption',
             default: 'p',
         },
+
+        onClick: {
+            type: Function,
+            description: 'On Click Handler',
+            default: () => {},
+        }
     },
 }
 </script>

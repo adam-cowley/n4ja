@@ -1,3 +1,3 @@
-@mixin shadow($colour: $shadow, $x: $shadow-x, $y: $padding-sm, $spread: $shadow-spread) {
-    box-shadow: 0 $x $y $spread $colour !important;
+@mixin shadow($colour: $shadow, $horizontal: $shadow-horizontal, $vertical: $shadow-vertical, $blur: $shadow-blur, $spread: $shadow-spread) {
+    box-shadow: $horizontal $vertical $blur $spread $colour;
 }

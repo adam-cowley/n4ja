@@ -11,11 +11,6 @@
                     <p v-if="caption" class="caption">{{ caption }}</p>
                 </div>
             </div>
-            
-            <pre>{{ config }}</pre>
-            <pre>{{ relationships }}</pre>
-
-            <pre>{{ data }}</pre>
 
             <n4ja-children v-if="config.children" :children="config.children" :data="data" />
         </n4ja-card-body>

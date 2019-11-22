@@ -12,7 +12,7 @@
                 :context="['Search']"
             />
             <button class="remove" @click.prevent="handleRemove">
-                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <svg width="24px" height="24px" viewBox="0 0 24 24">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                         <g id="Interface-Essential-/-Delete-/-delete-1" stroke="#000000" stroke-width="1.5">
                             <g id="Group">
@@ -29,9 +29,9 @@
         </div>
 
 
-        <ul class="suggestions" v-if="suggestions.length">
+        <ul class="suggestions" v-if="filteredSuggestions.length">
             <li
-                v-for="suggestion in suggestions" 
+                v-for="suggestion in filteredSuggestions" 
                 :key="suggestion.identity.toNumber()"
                 @click.prevent="handleSelect(suggestion)"
             >
@@ -60,6 +60,11 @@ export default {
             description: 'Template for displaying results - either the property name as a string or a function that returns a string',
             // default: node => Object.values(node.properties).join(', '),
         },
+        exclude: {
+            type: [ Array, ],
+            description: 'Options to exclude',
+            default: () => [],
+        },
 
 
         value: null,
@@ -75,6 +80,13 @@ export default {
         suggestions: [],
     }),
 
+    computed: {
+        filteredSuggestions() {
+            const exclude = this.exclude.map(n => n.identity.toNumber());
+            
+            return this.suggestions.filter(n => !exclude.includes( n.identity.toNumber() ) )
+        },
+    },
     methods: {
         search() {
             if ( !this.input || this.input.length == 0 ) {

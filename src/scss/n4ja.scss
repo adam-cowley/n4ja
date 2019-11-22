@@ -254,7 +254,7 @@ body {
                         color: $sidebar-links-hover;
                     }
 
-                    &.router-link-active {
+                    &.router-link-exact-active {
                         border-color: $sidebar-links-hover;
                     }
 
@@ -373,7 +373,7 @@ body {
         background: #fff;
         border-radius: $border-radius-lg;
         
-        @include shadow($login-shadow, $login-shadow-x, $login-shadow-y, $login-shadow-spread);
+        @include shadow($login-shadow, $login-shadow-vertical, $login-shadow-horizontal, $login-shadow-blur, $login-shadow-spread);
 
         .logo {
             img {

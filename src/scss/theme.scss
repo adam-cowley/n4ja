@@ -1,13 +1,4 @@
 /**
- * Neo4j Brand Colours
- */
-$neo4j-green: #65b144;
-$neo4j-blue: #008cc1;
-$neo4j-purple: #DB96F7;
-$neo4j-yellow: #E9BA3B;
-$neo4j-orange: #f58220;
-
-/**
  * Refactoring UI Pallet 20
  */
 $light-blue-050: #EBF8FF;
@@ -91,13 +82,15 @@ $white: #fff;
 
 $body-background: $cool-grey-050;
 
-$shadow: rgba($cool-grey-200, .4);
-$shadow-x: 0;
-$shadow-y: $padding-xs;
-$shadow-spread: $padding-xs /2;
+$shadow: rgba($cool-grey-200, .3);
+
+$shadow-horizontal: 0;
+$shadow-vertical: $padding-xs;
+$shadow-blur: $padding-xs;
+$shadow-spread: $padding-xs/2;
 
 $navigation-background: $white;
-$navigation-shadow: $cool-grey-100;
+$navigation-shadow: rgba($cool-grey-600, .1);
 $navigation-links: $cool-grey-500;
 $navigation-links-hover: lighten($navigation-links, 10%);
 $navigation-links-active: darken($navigation-links, 10%);
@@ -116,9 +109,10 @@ $sidebar-links-active-border-width: 4px;
 
 
 $login-background: $cool-grey-100;
-$login-shadow: rgba($cool-grey-200, .3);// $brand-secondary;
-$login-shadow-x: 0;
-$login-shadow-y: $padding-xs;
+$login-shadow: rgba($cool-grey-300, .3);
+$login-shadow-vertical: 0;
+$login-shadow-horizontal: $padding-xs;
+$login-shadow-blur: $padding-md;
 $login-shadow-spread: $padding-xs/2;
 
 $login-button-background: $brand-primary;

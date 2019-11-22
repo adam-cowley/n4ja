@@ -13,6 +13,7 @@ export default {
     render: () => {},
     data: () => ({ marker: null, }),
     created() {
+        const map = getMap(this);
         const config = this.$n4ja.getNodeConfig(this.entity)
 
         const options = {
@@ -34,8 +35,7 @@ export default {
             icon: L.icon(options),
         } )
             .on('click', () => this.onClick(this.entity))
-            .addTo( getMap(this) )
-
+            .addTo( map )
     },
     beforeDestroy() {
         getMap(this).removeLayer(this.marker)

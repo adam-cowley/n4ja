@@ -95,6 +95,7 @@ export default {
             return [ typeof config === 'object' ? config.key : config, idx ].join('--')
         },
         setDataFromRelationship() {
+            console.log(this.relationship)
             this.setData(this.mapping, this.relationship.properties)
         },
     },

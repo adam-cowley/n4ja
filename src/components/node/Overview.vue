@@ -9,6 +9,8 @@
 
             :nameTag="nameTag"
             :captionTag="captionTag"
+
+            :onClick="handleClick"
         />
     </component>
 </template>
@@ -88,7 +90,15 @@ export default {
                 `n4ja-node-overview-${this.node.labels.join('-').toLowerCase()}`,
                 ...this.node.labels.map(label => `n4ja-node-overview-${label.toLowerCase()}` )
             ]
-        }
+        },
+        handleClick() {
+            if ( this.mapping.route ) {
+                this.$router.push({
+                    name: this.mapping.route,
+                    params: { _id: this.node.identity.toNumber(), },
+                })
+            }
+        },
     },
 
     watch: {

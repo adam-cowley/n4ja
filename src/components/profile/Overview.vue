@@ -1,16 +1,13 @@
 <template>
     <n4ja-card class="n4ja-profile-overview">
         <n4ja-card-body>
-            <div class="overview">
-                <div class="picture-container">
-                    <div class="picture" :style="pictureStyle()" />
-                </div>
-
-                <div class="details">
-                    <h1 v-if="name">{{ name }}</h1>
-                    <p v-if="caption" class="caption">{{ caption }}</p>
-                </div>
-            </div>
+            <n4ja-proflle-header
+                :picture="picture"
+                :name="name"
+                :caption="caption"
+                :cover="cover"
+                :onClick="handleClick"
+            >
 
             <n4ja-children v-if="config.children" :children="config.children" :data="data" />
         </n4ja-card-body>
@@ -28,13 +25,18 @@ const defaults = {
 };
 
 export default {
-    name: 'n4ja-profile-details',
+    name: 'n4ja-profile-overview',
     props: {
         config: {
             type: Object,
             default: () => {},
         },
         data: Object,
+        onClick: {
+            type: Function,
+            description: 'On Click Handler',
+            default: () => {},
+        }
     },
     data: () => defaults,
     created() {
