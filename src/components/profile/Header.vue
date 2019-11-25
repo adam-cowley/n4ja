@@ -17,10 +17,9 @@ export default {
             description: 'The context in which this node is being displayed',
         },
 
-        name: [ String, Boolean, ],
+        name: [ String, Boolean, null, ],
         caption: {
             type: [ String, Boolean, ],
-            default: () => [],
         },
         picture: [ String, Boolean, ],
 

@@ -1,5 +1,5 @@
 <template>
-    <component :is="getContextComponent('dt')" class="n4ja-key" :class="classes">
+    <component :is="getContextComponent(tag)" class="n4ja-key" :class="classes">
         {{ keyString }}
     </component>
 </template>
@@ -19,6 +19,11 @@ export default {
             description: 'The context in which this key is being displayed',
         },
 
+        tag: {
+            type: String,
+            description: 'Fallback tag',
+            default: 'dt',
+        },
     },
 
     computed: {

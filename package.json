@@ -1,6 +1,6 @@
 {
   "name": "n4ja",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A set of VueJS components for Neo4j Graph Apps",
   "main": "src/index.js",
   "scripts": {
@@ -13,9 +13,11 @@
   "author": "Adam Cowley <github@adamcowley.co.uk>",
   "license": "MIT",
   "dependencies": {
+    "chart.js": "^2.9.3",
     "jsonpath": "^1.0.2",
     "leaflet": "^1.5.1",
     "vue": "^2.6.6",
+    "vue-chartjs": "^3.5.0",
     "vue-neo4j": "^0.1.9",
     "vue-router": "^3.1.3"
   },

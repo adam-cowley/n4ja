@@ -5,6 +5,24 @@ const SEPARATOR = '-'
 
 export default {
     methods: {
+        pad(value, length = 2, char = '0') {
+            return ( char.repeat(length) + value ).substr(-2)
+        },
+        toString(value) {
+            // TODO: Support more types & friendly formatting
+
+            if ( typeof value.toNumber === 'function' ) {
+                return value.toNumber()
+            }
+
+            // Date
+            if ( value.year && value.month && value.day ) { 
+                return `${value.year.toNumber()}-${ this.pad(value.month.toNumber()) }-${ this.pad(value.day.toNumber())}`
+            }
+
+
+            return value
+        },
         find(object, query) {
             return jsonpath.query(object, query)
         },

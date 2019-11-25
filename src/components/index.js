@@ -10,7 +10,6 @@ export { default as Tab } from './layout/desktop/sidebar/Tab'
 
 export { default as Dashboard } from './layout/dashboard/Dashboard'
 
-
 // UI
 export { default as Debug } from './Debug'
 export { default as Loading } from './ui/Loading'
@@ -21,6 +20,11 @@ export { default as Card } from './ui/card/Card'
 export { default as CardHeader } from './ui/card/Header'
 export { default as CardBody } from './ui/card/Body'
 export { default as CardFooter } from './ui/card/Footer'
+
+export { default as Alert } from './ui/Alert'
+export { default as Action } from './ui/Action'
+
+export { default as Table } from './table/Table'
 
 // Search Results & Node Overviews
 export { default as NodeOverview } from './node/Overview'
@@ -47,8 +51,9 @@ export { default as Polyline } from './map/Polyline'
 // Forms
 export { default as Autocomplete } from './form/Autocomplete'
 
+// Charts
+export { default as BarChart } from './charts/BarChart'
+export { default as Sparkline } from './charts/SparkLine'
 
-export { default as Alert } from './ui/Alert'
-export { default as Action } from './ui/Action'
-
+// Misc
 export { default as Neo4jLogo } from './Neo4jLogo'

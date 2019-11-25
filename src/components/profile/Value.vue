@@ -29,19 +29,25 @@ export default {
             type: [ Array, String, ],
             description: 'The context in which this node is being displayed',
         },
+
+        tag: {
+            type: String,
+            description: 'Fallback tag',
+            default: 'dd',
+        },
         
         value: null,
     },
 
     computed: {
         isNode() {
-            return this.value.hasOwnProperty('identity');
+            return this.value && this.value.hasOwnProperty('identity');
         },
     },
 
     methods: {
         getComponent() {
-            return 'dd';
+            return this.tag;
         }
     },
 }
