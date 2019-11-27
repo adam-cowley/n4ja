@@ -54,6 +54,7 @@ export { default as Autocomplete } from './form/Autocomplete'
 // Charts
 export { default as BarChart } from './charts/BarChart'
 export { default as Sparkline } from './charts/SparkLine'
+export { default as LineChart } from './charts/LineChart'
 
 // Misc
 export { default as Neo4jLogo } from './Neo4jLogo'
