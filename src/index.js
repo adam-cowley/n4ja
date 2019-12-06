@@ -2,7 +2,7 @@ import VueNeo4j from 'vue-neo4j'
 
 import * as components from './components';
 
-import DataMixin from './mixins/data'
+// import DataMixin from './mixins/data'
 
 import './scss/n4ja.scss';
 
@@ -43,7 +43,7 @@ export default {
         Vue.use(VueNeo4j);
 
         // Install Mixins
-        Vue.mixin(DataMixin);
+        // Vue.mixin(DataMixin);
         // Vue.mixin(ProfileMixin);
         // Vue.mixin(BloomMixin);
         // Vue.mixin(CustomisationMixin);

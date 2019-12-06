@@ -24,36 +24,43 @@ export { default as CardFooter } from './ui/card/Footer'
 export { default as Alert } from './ui/Alert'
 export { default as Action } from './ui/Action'
 
-export { default as Table } from './table/Table'
+export { default as Table } from './ui/table/Table'
 
 // Search Results & Node Overviews
-export { default as NodeOverview } from './node/Overview'
-export { default as NodeDetails } from './node/Details'
+export { default as NodeOverview } from './presentation/node/Overview'
+export { default as NodeDetails } from './presentation/node/Details'
 
-export { default as RelationshipOverview } from './relationship/Overview'
-export { default as RelationshipDetails } from './relationship/Details'
+export { default as RelationshipOverview } from './presentation/relationship/Overview'
+export { default as RelationshipDetails } from './presentation/relationship/Details'
 
 // Generic Entity Display Components
-// TODO: Needs to be renamed from 'profile'
-export { default as ProfileHeader } from './profile/Header'
-export { default as ProfilePicture } from './profile/Picture'
-export { default as ProfileDetail } from './profile/Detail'
+export { default as Children } from './profile/Children'
 
-export { default as Key } from './profile/Key'
-export { default as Value } from './profile/Value'
+export { default as EntityHeader } from './layout/entity/Header'
+export { default as Entityicture } from './layout/entity/Picture'
+
+export { default as EntityDetail } from './entity/Detail'
+export { default as Key } from './layout/entity/Key'
+export { default as Value } from './layout/entity/Value'
 
 // Maps
-export { default as Map } from './map/index'
-export { default as Layer } from './map/Layer'
-export { default as Marker } from './map/Marker'
-export { default as Polyline } from './map/Polyline'
+export { default as Map } from './ui/map/index'
+export { default as Layer } from './ui/map/Layer'
+export { default as Marker } from './ui/map/Marker'
+export { default as Polyline } from './ui/map/Polyline'
 
 // Forms
-export { default as Autocomplete } from './form/Autocomplete'
+export { default as Autocomplete } from './ui/form/Autocomplete'
 
 // Charts
-export { default as BarChart } from './charts/BarChart'
-export { default as Sparkline } from './charts/SparkLine'
+export { default as BarChart } from './ui/charts/BarChart'
+export { default as Sparkline } from './ui/charts/SparkLine'
 
 // Misc
 export { default as Neo4jLogo } from './Neo4jLogo'
+export { default as KitchenSink } from './Components'
+
+// Cypher
+export { default as CypherDetails } from './cypher/Details'
+export { default as CypherOverviews } from './cypher/Overviews'
+export { default as CypherTable } from './cypher/Table'
