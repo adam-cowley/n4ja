@@ -1,0 +1,70 @@
+@import "breakpoints";
+
+.n4ja-layout-dashboard {
+    &.with-sidebar {
+        .container {
+            margin: $gutter-height $gutter-width;
+        }
+    }
+
+    .n4ja-grid {
+        display: flex;
+        margin: $gutter-height -$gutter-width;
+
+        .n4ja-column {
+            flex: 1;
+            box-sizing: border-box;
+            margin: 0 $gutter-width $gutter-height;
+
+            // min-width: 220px;
+            
+            @for $width from 1 through 12 {
+                &.n4ja-col-#{$width} {
+                    width: calc(#{round(percentage($width/12))} - #{$gutter-width*2});
+                    flex: 0 0 calc(#{percentage($width/12)} - #{$gutter-width*2});
+                }
+            }
+
+            .card {
+                margin-bottom: $gutter-height;
+            }
+        }
+
+        @media all and (max-width: $breakpoint-sm) {
+            flex-direction: column;
+
+            .n4ja-column {
+                min-width: calc(100% - #{$gutter-width*2});
+                max-width: 320px;
+            }
+        }
+
+        &.deck {
+            display: flex;
+            // flex-direction: row;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        
+            .n4ja-column {
+                display: flex;
+            //     // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+            //     // flex: 1 0 0%;
+
+            //     flex-direction: column;
+            //     flex-wrap: wrap;
+            //     // padding: 12px;
+        
+                .n4ja-card {
+            //         flex: 1;
+        
+                    display: flex;
+        
+            //         .node-details {
+            //             flex: 1;
+            //         }
+                }
+            }
+        }
+        
+    }
+}

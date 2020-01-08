@@ -1,39 +1,44 @@
 <template>
-    <div class="n4ja-cypher-overviews">
+    <n4ja-grid deck class="n4ja-cypher-overviews">
         <n4ja-loading v-if="loading" />
 
-        <div class="alert alert-error" v-if="error">
-            {{ error }}
-        </div>
+        <n4ja-column v-if="error" columns="12">
+            <div class="alert alert-error" v-if="error">
+                {{ error }}
+            </div>
+        </n4ja-column>
 
-        <div class="no-results" v-if="result && !result.records.length" v-html="noResults" />
-
+        <n4ja-column v-if="result && !result.records.length" columns="12">
+            <div class="no-results" v-html="noResults" />
+        </n4ja-column>
 
         <template v-if="result && result.records.length">
-            <component 
-                :is="outerComponent"
+            <n4ja-column
                 v-for="(row, id) in result.records"
                 :key="id"
+                :columns="columns"
             >
-                <component :is="innerComponent">
-                    <n4ja-node-overview
-                        v-if="node && row.has(node)"
-                        :context="context"
-                        :node="row.get(node)"
-                    />
+                <component :is="outerComponent">
+                    <component :is="innerComponent">
+                        <n4ja-node-overview
+                            v-if="node && row.has(node)"
+                            :context="context"
+                            :node="row.get(node)"
+                        />
 
-                    <n4ja-relationship-overview
-                        v-if="relationship && row.has(relationship)"
-                        :context="context"
-                        :relationship="row.get(relationship)"
-                        :start="row.get(start)"
-                        :end="row.get(end)"
-                    />
+                        <n4ja-relationship-overview
+                            v-if="relationship && row.has(relationship)"
+                            :context="context"
+                            :relationship="row.get(relationship)"
+                            :start="row.get(start)"
+                            :end="row.get(end)"
+                        />
 
+                    </component>
                 </component>
-            </component>
+            </n4ja-column>
         </template>
-    </div>
+    </n4ja-grid>
 </template>
 
 <script>
@@ -48,12 +53,17 @@ export default {
         },
 
         cypher: String,
-
-        // TODO: Move to Table Component
-        columns: {
-            type: Array,
-            description: 'Columns to pull from each row and display in result',
+        params: {
+            type: Object,
+            default: () => ({}),
         },
+
+        columns: {
+            type: Number,
+            description: 'The number of columns for each result to take up',
+            default: 12,
+        },
+
         index: {
             type: Boolean,
             description: 'Show an index column at the start of the row',
@@ -119,8 +129,10 @@ export default {
             this.error = false;
             this.loading = true;
 
-            this.$neo4j.run(this.cypher)
-                .then(res => this.result = res)
+            this.$neo4j.run(this.cypher, this.params)
+                .then(res => {
+                    this.result = res
+                })
                 .catch(e => this.error = e)
                 .finally(() => this.loading = false)
         },
@@ -128,6 +140,9 @@ export default {
 
     watch: {
         query() {
+            this.load();
+        },
+        params() {
             this.load();
         },
     },

@@ -16,6 +16,7 @@
     "chart.js": "^2.9.3",
     "jsonpath": "^1.0.2",
     "leaflet": "^1.5.1",
+    "neovis.js": "^1.2.1",
     "vue": "^2.6.6",
     "vue-chartjs": "^3.5.0",
     "vue-neo4j": "^0.1.9",

@@ -74,7 +74,7 @@ export default {
             // TODO: Burn jsonpath?
             if ( this.cleanConfig.type === 'relationships' ) {
                 // this.values = this.find(this.relationships, `$.${this.config.key}`)
-                this.values = this.relationships[ this.cleanConfig.key ] || []
+                this.values = this.relationships && this.relationships[ this.cleanConfig.key ] ? this.relationships[ this.cleanConfig.key ] : []
             }
             else if ( this.cleanConfig.type === 'property' ) {
                 this.values = this.find(this.node.properties, `$.${this.cleanConfig.key}`)

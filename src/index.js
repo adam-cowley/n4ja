@@ -78,7 +78,6 @@ export default {
 
         Vue.$n4ja = Vue.prototype.$n4ja = Object.assign({}, N4ja, { options });
 
-
         // TODO: Support nodes...
         // Vue.prototype.getViewRoute = (type, key) => {
         //     if ( type  == 'relationship' ) {

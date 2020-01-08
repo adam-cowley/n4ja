@@ -12,7 +12,7 @@
        />
 
        <div class="n4ja-details-container n4ja-relationship-details-container">
-            <n4ja-profile-detail
+            <n4ja-detail
                 v-for="(config, i) in mapping.details" 
                 :key="detailKey(config, i)" 
                 :config="config"
@@ -32,6 +32,9 @@
  * properties and relationships from the n4ja config
  * 
  */
+import EntityComponent from '../../EntityComponent'
+import ContextComponent from '../../ContextComponent'
+
 const defaults = {
     type: false,
     name: false,
@@ -42,6 +45,7 @@ const defaults = {
 
 export default {
     name: 'n4ja-relationship-details',
+    mixins: [ EntityComponent, ContextComponent ],
 
     props: {
         context: {

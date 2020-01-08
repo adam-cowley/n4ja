@@ -53,9 +53,9 @@ export { default as Polyline } from './ui/map/Polyline'
 export { default as Autocomplete } from './ui/form/Autocomplete'
 
 // Charts
-export { default as BarChart } from './charts/BarChart'
-export { default as Sparkline } from './charts/SparkLine'
-export { default as LineChart } from './charts/LineChart'
+export { default as BarChart } from './ui/charts/BarChart'
+export { default as Sparkline } from './ui/charts/SparkLine'
+export { default as LineChart } from './ui/charts/LineChart'
 
 // Misc
 export { default as Neo4jLogo } from './Neo4jLogo'
@@ -65,3 +65,6 @@ export { default as KitchenSink } from './Components'
 export { default as CypherDetails } from './cypher/Details'
 export { default as CypherOverviews } from './cypher/Overviews'
 export { default as CypherTable } from './cypher/Table'
+export { default as CypherSearch } from './cypher/Search'
+
+export { default as Neovis } from './ui/charts/Neovis'

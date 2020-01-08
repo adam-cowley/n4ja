@@ -28,7 +28,6 @@
             </button>
         </div>
 
-
         <ul class="suggestions" v-if="filteredSuggestions.length">
             <li
                 v-for="suggestion in filteredSuggestions" 
@@ -54,11 +53,16 @@ export default {
             description: 'The (indexed) property to search on',
             default: 'name',
         },
-        index: {
+        condition: {
+            type: String,
+            description: 'What condition to search the regular index on - STARTS WITH, ENDS WITH, CONTAINS',
+            default: 'CONTAINS',
+        },
+        fulltextIndex: {
             type: String,
             description: 'Name of the fulltext index to search on',
         },
-
+        
         template: {
             type: [ String, Function ],
             description: 'Template for displaying results - either the property name as a string or a function that returns a string',
@@ -96,13 +100,13 @@ export default {
                 return
             }
 
-            const query = this.index !== undefined ?
+            const query = this.fulltextIndex !== undefined ?
                 `
                     CALL db.index.fulltext.queryNodes($index, $query) YIELD node, score
                     RETURN node AS n
                     ORDER BY score DESC
                 ` : `
-                    MATCH (n:\`${this.label}\`) WHERE n.\`${this.property}\` STARTS WITH $input
+                    MATCH (n:\`${this.label}\`) WHERE n.\`${this.property}\` ${this.condition} $input
                     RETURN n ORDER BY n.\`${this.property}\` LIMIT 10
                 `;
 

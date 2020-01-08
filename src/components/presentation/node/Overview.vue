@@ -67,7 +67,7 @@ export default {
             description: 'Node to display in this component',
         },
         relationships: {
-            type: Object,
+            type: [ Object, Boolean, ],
             description: 'Eagerly loaded relationships to use in the details',
         },
     },

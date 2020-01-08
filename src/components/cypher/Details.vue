@@ -1,31 +1,38 @@
 <template>
-    <div class="n4ja-cypher-overviews">
+    <n4ja-grid deck class="n4ja-cypher-overviews">
         <n4ja-loading v-if="loading" />
 
-        <div class="alert alert-error" v-if="error">
-            {{ error }}
-        </div>
+        <n4ja-column v-if="error" columns="12">
+            <div class="alert alert-error" v-if="error">
+                {{ error }}
+            </div>
+        </n4ja-column>
 
-        <div class="no-results" v-if="result && !result.records.length" v-html="noResults" />
-
+        <n4ja-column v-if="result && !result.records.length" columns="12">
+            <n4ja-card>
+                <n4ja-card-body class="no-results" v-html="noResults" />
+            </n4ja-card>
+        </n4ja-column>
 
         <template v-if="result && result.records.length">
-            <component 
-                :is="outerComponent"
+            <n4ja-column
                 v-for="(row, id) in result.records"
                 :key="id"
+                :columns="columns"
             >
-                <component :is="innerComponent">
-                    <n4ja-node-overview
-                        v-if="row.has(node)"
-                        :context="context"
-                        :node="row.get(node)"
-                        :relationships="relationships && row.has(relationships) ? row.get(relationships) : false"
-                    />
+                <component :is="outerComponent">
+                    <component :is="innerComponent">
+                        <n4ja-node-details
+                            v-if="row.has(node)"
+                            :context="context"
+                            :node="row.get(node)"
+                            :relationships="relationships && row.has(relationships) ? row.get(relationships) : null"
+                        />
+                    </component>
                 </component>
-            </component>
+            </n4ja-column>
         </template>
-    </div>
+    </n4ja-grid>
 </template>
 
 <script>
@@ -40,11 +47,19 @@ export default {
         },
 
         cypher: String,
+        params: {
+            type: Object,
+            default: () => ({}),
+        },
 
-        // TODO: Move to Table Component
         columns: {
-            type: Array,
-            description: 'Columns to pull from each row and display in result',
+            type: Number,
+            description: 'The number of columns for each result to take up',
+            default: 12,
+        },
+        relationships: {
+            type: String,
+            description: 'result key that holds the relationships',
         },
         index: {
             type: Boolean,
@@ -68,7 +83,6 @@ export default {
             default: false,
         },
         
-
         cards: {
             type: Boolean,
             description: 'Show the overviews inside a card?',
@@ -102,7 +116,7 @@ export default {
             this.error = false;
             this.loading = true;
 
-            this.$neo4j.run(this.cypher)
+            this.$neo4j.run(this.cypher, this.params)
                 .then(res => this.result = res)
                 .catch(e => this.error = e)
                 .finally(() => this.loading = false)
@@ -111,6 +125,9 @@ export default {
 
     watch: {
         query() {
+            this.load();
+        },
+        params() {
             this.load();
         },
     },

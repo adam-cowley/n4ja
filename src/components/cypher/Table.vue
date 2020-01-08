@@ -30,8 +30,7 @@ export default {
         },
 
         cypher: String,
-
-        // TODO: Move to Table Component
+        
         columns: {
             type: Array,
             description: 'Columns to pull from each row and display in result',
