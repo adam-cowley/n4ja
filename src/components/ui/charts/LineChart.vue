@@ -28,6 +28,7 @@
         },
     }
 
+    import EntityComponent from '../../EntityComponent'
     import { colours } from './theme';
 
     export default {
@@ -35,6 +36,9 @@
         components: {
             LineChart,
         },
+        mixins: [
+            EntityComponent,
+        ],
         props: {
             result: {
                 type: null,

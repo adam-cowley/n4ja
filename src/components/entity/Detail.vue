@@ -80,7 +80,6 @@ export default {
                 this.values = this.find(this.node.properties, `$.${this.cleanConfig.key}`)
             }
             else if ( this.cleanConfig.type === 'start' || this.cleanConfig.type === 'end' ) {
-                // console.log(this.cleanConfig.type, this[ this.cleanConfig.type ])
                 this.values = [ this[ this.cleanConfig.type ] ]
             }
             else {

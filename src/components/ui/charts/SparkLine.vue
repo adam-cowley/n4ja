@@ -32,9 +32,13 @@ const LineChart = {
     },
 }
 
+import EntityComponent from '../../EntityComponent'
+
 export default {
-    
     name: 'n4ja-sparkline',
+    mixins: [
+        EntityComponent,
+    ],
     props: {
         data: Array,
 
@@ -57,10 +61,6 @@ export default {
 
     computed: {
         datasets() {
-            if ( !this.data ) {
-                return []
-            }
-
             const ctx = document.createElement("canvas").getContext('2d')
 
             const gradient = ctx.createLinearGradient(this.width /2, 0, this.width/2, this.height);
@@ -134,24 +134,6 @@ export default {
       
             }
         },
-    },
-
-    mounted() {
-//         this.context = this.$el.querySelector('canvas').getContext("2d")
-//         this.gradient = this.context.createLinearGradient(0, 0, 100, 100)
-
-// this.gradient.addColorStop(0, "#80b6f4");
-// this.gradient.addColorStop(1, "#f49080");
-        // this.gradient.addColorStop(0, theme_success)
-        // this.gradient.addColorStop(.25, theme_info)
-        // this.gradient.addColorStop(.5, theme_warning)
-        // this.gradient.addColorStop(.7, theme_danger)
-        // this.gradient.addColorStop(1, theme_danger)
-
-
-
-        // console.log(this.$el.querySelector('canvas'))
-
     },
 }
 </script>
