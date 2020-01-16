@@ -57,6 +57,10 @@ export default {
 
     computed: {
         datasets() {
+            if ( !this.data ) {
+                return []
+            }
+
             const ctx = document.createElement("canvas").getContext('2d')
 
             const gradient = ctx.createLinearGradient(this.width /2, 0, this.width/2, this.height);
@@ -78,7 +82,6 @@ export default {
                     // pointBackgroundColor:      gradientStroke,
                     // pointHoverBackgroundColor: gradientStroke,
                     // pointHoverBorderColor:     gradientStroke,
-
 
                     data: this.data.map(value => this.toString( value ) ),
                 }

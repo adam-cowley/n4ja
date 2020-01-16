@@ -28,6 +28,7 @@ const BarChart = {
     },
 }
 
+import EntityComponent from '../../EntityComponent'
 import { colours } from './theme';
 
 export default {
@@ -35,6 +36,9 @@ export default {
     components: {
         BarChart,
     },
+    mixins: [
+        EntityComponent,
+    ],
     props: {
         result: {
             type: null,
@@ -55,7 +59,7 @@ export default {
 
     computed: {
         labels() {
-            return this.result.records.map(row => this.toString( row.get(this.xAxis)))
+            return this.result.records.map(row => this.toString( row.get(this.xAxis) ))
         },
         datasets() {
             return this.yAxis.map((label, index) => ({
