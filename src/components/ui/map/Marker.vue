@@ -25,7 +25,7 @@ export default {
         // TODO: Tidy this up
         Object.entries( config.map && config.map.icon || {} ).forEach(([key, value]) => {
             if ( typeof value === 'function' ) {
-                value = value(this.entity.properties)
+                value = value(this.entity)
             }
 
             options[ key ] = value

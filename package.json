@@ -1,6 +1,6 @@
 {
   "name": "n4ja",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A set of VueJS components for Neo4j Graph Apps",
   "main": "src/index.js",
   "scripts": {
