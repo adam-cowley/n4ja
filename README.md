@@ -16,7 +16,7 @@ export { default as N4ja } from 'n4ja'
 // ...
 
 Vue.use(N4ja, {
-    // ... 
+    // ...
 });
 ```
 
@@ -81,9 +81,9 @@ n4ja-relationship-shareholder-of
 
 ```bash
 vue create panamapapers
-cd panamapapers 
+cd panamapapers
 
-npm i --save vue vue-router vue-neo4j       
+npm i --save vue vue-router vue-neo4j
 npm link n4ja
 
 
@@ -91,3 +91,15 @@ npm link n4ja
 chainWebpack: config => config.resolve.symlinks(false),
 ```
 
+## Chart
+
+"chart.js": "^2.9.3",
+"vue-chartjs": "^3.5.0",
+
+## Maps
+
+"leaflet": "^1.5.1",
+
+## Graphs
+
+"neovis.js": "^1.2.1",

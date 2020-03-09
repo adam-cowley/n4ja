@@ -9,109 +9,109 @@
 </template>
 
 <script>
-    import { Line } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 
-    const LineChart = {
-        extends: Line,
-        props: {
-            chartdata: {
-                type: Object,
-                default: null,
-            },
-            options: {
-                type: Object,
-                default: null,
+const LineChart = {
+    extends: Line,
+    props: {
+        chartdata: {
+            type: Object,
+            default: null,
+        },
+        options: {
+            type: Object,
+            default: null,
+        }
+    },
+    mounted () {
+        this.renderChart(this.chartdata, this.options)
+    },
+}
+
+import EntityComponent from '../../EntityComponent'
+import { colours } from './theme';
+
+export default {
+    name: 'n4ja-line-chart',
+    components: {
+        LineChart,
+    },
+    mixins: [
+        EntityComponent,
+    ],
+    props: {
+        result: {
+            type: null,
+            description: 'Neo4j Driver Result',
+        },
+
+        xAxis: {
+            type: String,
+
+        },
+        yAxis: {
+            type: [ String, Array, ],
+        },
+    },
+    data: () => ({
+        loading: true,
+    }),
+
+    computed: {
+        labels() {
+            return this.result.records.map(row => this.toString( row.get(this.xAxis)))
+        },
+        datasets() {
+            return this.yAxis.map((label, index) => ({
+                label: label,
+                borderColor: colours[ index ],
+                opacity: .8,
+                fill: false,
+                data: this.result.records.map(row => this.toString( row.get(label) )),
+            }))
+        },
+        chartData() {
+            return {
+                labels: this.labels,
+                datasets: this.datasets,
             }
         },
-        mounted () {
-            this.renderChart(this.chartdata, this.options)
-        },
-    }
+        options() {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
 
-    import EntityComponent from '../../EntityComponent'
-    import { colours } from './theme';
+                layout: {
+                    padding: 0,
+                },
 
-    export default {
-        name: 'n4ja-line-chart',
-        components: {
-            LineChart,
-        },
-        mixins: [
-            EntityComponent,
-        ],
-        props: {
-            result: {
-                type: null,
-                description: 'Neo4j Driver Result',
-            },
+                legend: {
+                    position: 'bottom',
+                },
 
-            xAxis: {
-                type: String,
-
-            },
-            yAxis: {
-                type: [ String, Array, ],
-            },
-        },
-        data: () => ({
-            loading: true,
-        }),
-
-        computed: {
-            labels() {
-                return this.result.records.map(row => this.toString( row.get(this.xAxis)))
-            },
-            datasets() {
-                return this.yAxis.map((label, index) => ({
-                    label: label,
-                    borderColor: colours[ index ],
-                    opacity: .8,
-                    fill: false,
-                    data: this.result.records.map(row => this.toString( row.get(label) )),
-                }))
-            },
-            chartData() {
-                return {
-                    labels: this.labels,
-                    datasets: this.datasets,
+                scales: {
+                    xAxes: [{
+                        // ticks: { display: false },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: { display: true },
+                        gridLines: {
+                            display: true,
+                            drawBorder: true
+                        }
+                    }]
                 }
-            },
-            options() {
-                return {
-                    responsive: true,
-                    maintainAspectRatio: false,
-
-                    layout: {
-                        padding: 0,
-                    },
-
-                    legend: {
-                        position: 'bottom',
-                    },
-
-                    scales: {
-                        xAxes: [{
-                            // ticks: { display: false },
-                            gridLines: {
-                                display: false,
-                                drawBorder: false
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: { display: true },
-                            gridLines: {
-                                display: true,
-                                drawBorder: true
-                            }
-                        }]
-                    }
-                }
-            },
+            }
         },
+    },
 
-        mounted() {
-            this.loading = !this.result;
-            // TODO: Fallback to loading a cypher query
-        },
-    }
+    mounted() {
+        this.loading = !this.result;
+        // TODO: Fallback to loading a cypher query
+    },
+}
 </script>
