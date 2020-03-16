@@ -26,6 +26,8 @@ export { default as Action } from './ui/Action'
 
 export { default as Table } from './ui/table/Table'
 
+export { default as Modal } from './ui/modal/Modal'
+
 // Search Results & Node Overviews
 export { default as NodeOverview } from './presentation/node/Overview'
 export { default as NodeDetails } from './presentation/node/Details'
@@ -53,9 +55,9 @@ export { default as Polyline } from './ui/map/Polyline'
 export { default as Autocomplete } from './ui/form/Autocomplete'
 
 // Charts
-export { default as BarChart } from './ui/charts/BarChart'
-export { default as Sparkline } from './ui/charts/SparkLine'
-export { default as LineChart } from './ui/charts/LineChart'
+// export { default as BarChart } from './ui/charts/BarChart'
+// export { default as Sparkline } from './ui/charts/SparkLine'
+// export { default as LineChart } from './ui/charts/LineChart'
 
 // Misc
 export { default as Neo4jLogo } from './Neo4jLogo'
@@ -67,4 +69,5 @@ export { default as CypherOverviews } from './cypher/Overviews'
 export { default as CypherTable } from './cypher/Table'
 export { default as CypherSearch } from './cypher/Search'
 
+// Neovis
 export { default as Neovis } from './ui/charts/Neovis'

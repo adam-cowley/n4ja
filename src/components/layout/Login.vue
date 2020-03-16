@@ -25,11 +25,15 @@
                         <option v-for="host in hosts" :key="host" :value="host" v-html="host" />
                     </select>
                 </div>
+                <div class="database" v-if="showDatabase">
+                    <label for="database" class="sr-only">Database</label>
+                    <input v-model="ldatabase" id="database" class="form-control" placeholder="Database" required>
+                </div>
                 <div class="full">
                     <label for="username" class="sr-only">Username</label>
                     <input v-model="lusername" id="username" class="form-control" placeholder="Username" required autofocus>
                 </div>
-                <div class="full">    
+                <div class="full">
                     <label for="inputPassword" class="sr-only">Password</label>
                     <input v-model="lpassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 </div>
@@ -63,7 +67,12 @@ export default {
         showHost: {
             type: Boolean,
             description: 'Show the hostname and port?',
-            showHost: false
+            default: false
+        },
+        showDatabase: {
+            type: Boolean,
+            description: 'Show the database name?',
+            default: false,
         },
         host: {
             type: String,
@@ -83,6 +92,10 @@ export default {
             type: [String, Number],
             description: 'Neo4j Bolt Port',
             default: 7687,
+        },
+        database: {
+            type: String,
+            description: 'Neo4j Database (4.0+)',
         },
         username: {
             type: String,
@@ -107,6 +120,7 @@ export default {
             lprotocol: this.protocol,
             lhost: this.host,
             lport: this.port,
+            ldatabase: this.database,
             lusername:this.username,
             lpassword: this.password,
             error: false,
@@ -115,9 +129,10 @@ export default {
     methods: {
         handleLogin() {
             this.loading = true;
-            this.$neo4j.connect(this.lprotocol, this.lhost, this.lport, this.lusername, this.lpassword, this.encrypted)
+            this.$neo4j.connect(this.lprotocol, this.lhost, this.lport, this.lusername, this.lpassword, this.ldatabase, this.encrypted)
                 .then(driver => {
-                    return this.$neo4j.run('MATCH (n) RETURN count(n)')
+                    const query = this.ldatabase === 'system' ? 'SHOW DATABASES' : 'MATCH (n) RETURN count(n)'
+                    return this.$neo4j.run(query)
                         .then(() => this.onConnect(driver));
                 })
                 .catch(e => {

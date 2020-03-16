@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import NeoVis from 'neovis.js'
+// import NeoVis from 'neovis.js'
 
 export default {
     name: 'neovis',

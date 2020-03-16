@@ -7,7 +7,7 @@
             <n4ja-column columns="6" class="ui form">
                 <input
                     type="text"
-                    v-model="search" 
+                    v-model="search"
                     :placeholder="searchPlaceholder"
                 />
             </n4ja-column>
@@ -63,7 +63,7 @@ export default {
             description: 'Message to display if there are no results',
             default: 'There are no results for this query',
         },
-        
+
 
         fulltextIndex: {
             type: String,
@@ -82,7 +82,7 @@ export default {
             description: 'What condition to search the regular index on - STARTS WITH, ENDS WITH, CONTAINS',
             default: 'CONTAINS',
         },
-        
+
     },
 
     data: () => ({

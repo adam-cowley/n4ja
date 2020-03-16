@@ -29,6 +29,10 @@ export default {
             type: Number,
             default: 4000,
         },
+        onClose: {
+            type: Function,
+            default: () => {},
+        },
     },
     data() {
         return {
@@ -46,6 +50,9 @@ export default {
     methods: {
         hide() {
             this.display = false;
+            if ( typeof this.onClose === 'function' ) {
+                this.onClose()
+            }
         },
         show() {
             this.display = true;

@@ -37,9 +37,9 @@ body {
                 width: 100%;
                 flex-direction: column;
 
-                
+
                 .ui.form .field>label {
-                    color: #fff; 
+                    color: #fff;
                     padding: 4px 0;
                 }
             }
@@ -219,7 +219,7 @@ body {
         width: $sidebar-width;
 
         background: $sidebar-background;
-        
+
         @include shadow($sidebar-shadow);
 
         padding-top: $content-padding;
@@ -303,7 +303,7 @@ body {
         margin: 60px auto;
         background: #fff;
         border-radius: $border-radius-lg;
-        
+
         @include shadow($login-shadow, $login-shadow-vertical, $login-shadow-horizontal, $login-shadow-blur, $login-shadow-spread);
 
         .logo {
@@ -395,7 +395,7 @@ body {
 
         dl {
             width: 100%;
-            
+
             dt {
                 font-weight: 700;
                 text-align: left;
@@ -461,7 +461,7 @@ body {
     &.n4ja-table-card {
         .card-body {
             padding: 0;
-    
+
             table {
                 border-radius: 0;
                 border-width: 0;
@@ -520,6 +520,41 @@ body {
     }
 }
 
+/** Modal */
+.n4ja-modal {
+    background-color: $loading-background;
+    border-radius: .2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 5000;
+    display: flex;
+
+    justify-content: center; /*centers items on the line (the x-axis by default)*/
+    align-items: center; /*centers items on the cross-axis (y by default)*/
+
+
+    .n4ja-card {
+        max-width: 90%;
+        width: 348px !important;
+
+        .actions {
+            float: right;
+
+            svg {
+                width: 12px;
+                height: 12px;
+
+                path {
+                    stroke-width: 3;
+                    stroke: $card-header-colour;
+                }
+            }
+        }
+    }
+}
 
 /** Loading Indicator */
 .n4ja-loading {
@@ -531,7 +566,7 @@ body {
     bottom: 0;
     right: 0;
     z-index: 5000;
-    
+
     &:before, &:after {
         width: 80px;
         height: 80px;
@@ -544,16 +579,16 @@ body {
         top: 50%;
         margin-top:-40px;
         margin-left:-40px;
-    
+
         background: $loading-colour;
-    
+
         animation: make-it-pop 1.2s infinite;
     }
-    
+
     &:after {
         animation-delay: .5s;
     }
-    
+
     span {
         height: 30px;
         position: absolute;
@@ -563,14 +598,14 @@ body {
         margin-top: 60px;
         margin-left: 0;
         text-align: center;
-    
+
         color: $loading-colour;
         text-transform: uppercase;
         font-weight: bold;
     }
 }
 
-@keyframes make-it-pop { 
+@keyframes make-it-pop {
     0% {
         /* @include pop(0, 0); */
         height: 0;
@@ -628,11 +663,11 @@ body {
         background: transparent;
         color: #fff;
         border: 1px solid #fff;
-    
+
         &:hover {
             background: transparent;
         }
-    
+
         &:active {
             background: transparent;
         }
@@ -743,7 +778,7 @@ body {
         }
     }
 
-   
+
 }
 
 .n4ja-sparkline {

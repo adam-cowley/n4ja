@@ -1,6 +1,6 @@
 <template>
     <div id="n4ja-dashboard-root" class="n4ja-layout-dashboard" :class="classes">
-        <n4ja-login
+    <n4ja-login
             v-if="!driver"
             :logo="loginLogo"
             :showHost="showHost"
@@ -8,6 +8,8 @@
             :hosts="hosts"
             :host="host"
             :port="port"
+            :showDatabase="showDatabase"
+            :database="database"
             :username="username"
             :password="password"
             :encrypted="encrypted"
@@ -76,7 +78,7 @@
             <slot>
                 <n4ja-router />
             </slot>
-            
+
             <slot name="footer" />
         </div>
     </div>
@@ -135,6 +137,16 @@ export default {
             type: [String, Number],
             description: 'Neo4j Bolt Port',
             default: 7687,
+        },
+        showDatabase: {
+            type: Boolean,
+            description: 'Show the database name?',
+            default: false,
+        },
+        database: {
+            type: String,
+            description: 'Neo4j Database (4.0+)',
+            default: 'neo4j',
         },
         username: {
             type: String,

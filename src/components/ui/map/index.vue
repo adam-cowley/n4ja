@@ -2,8 +2,8 @@
     <div class="n4ja-map">
         <div id="map" class="map-container" />
         <slot />
-        <n4ja-map-layer 
-            v-if="result"            
+        <n4ja-map-layer
+            v-if="result"
             :result="result"
             :markers="markers"
             :polylines="polylines"
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import leaflet from 'leaflet'
-import 'leaflet/dist/leaflet.css'
+// import leaflet from 'leaflet'
+// import 'leaflet/dist/leaflet.css'
 
 export default {
     name: 'n4ja-map',
@@ -32,12 +32,12 @@ export default {
         },
 
         markers: {
-            type: Array, 
-            default: () => [], 
+            type: Array,
+            default: () => [],
         },
         polylines: {
-            type: Array, 
-            default: () => [], 
+            type: Array,
+            default: () => [],
         },
 
         onMarkerClick: {

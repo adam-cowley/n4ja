@@ -1,10 +1,10 @@
 <template>
     <button
         :class="classes"
-        :to="to"
         @click="handleClick"
     >
-        {{ text }}
+        <component v-if="icon" :is="icon" />
+        <span>{{ text }}</span>
     </button>
 </template>
 
@@ -16,7 +16,6 @@ export default {
         value: Object,
         action: Object,
         id: [ String, Number, Object ],
-        value: Object,
     },
 
     computed: {
@@ -29,8 +28,11 @@ export default {
                 params: this.row,
             }
         },
+        icon() {
+            return this.action.icon;
+        },
         classes() {
-            return `${this.action.class || ''} btn btn-${this.action.variant} ui button ${this.action.variant}`;
+            return `${this.action.class || ''} XXX btn btn-${this.action.variant} ui button ${this.action.variant}`;
         },
         text() {
             // TODO: Replace?

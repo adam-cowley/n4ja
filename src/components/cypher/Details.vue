@@ -36,9 +36,11 @@
 </template>
 
 <script>
+import CypherMixins from './CypherMixins'
+
 export default {
     name: 'n4ja-cypher-details',
-
+    mixins: [ CypherMixins, ],
     props: {
         context: {
             type: [ String, Array, ],
@@ -65,11 +67,6 @@ export default {
             type: Boolean,
             description: 'Show an index column at the start of the row',
         },
-        noResults: {
-            type: String,
-            description: 'Message to display if there are no results',
-            default: 'There are no results for this query',
-        },
 
         node: {
             type: [ String, Boolean, ],
@@ -82,7 +79,7 @@ export default {
             description: 'The result key to use to find the map of relationships to use in the details presentation',
             default: false,
         },
-        
+
         cards: {
             type: Boolean,
             description: 'Show the overviews inside a card?',
@@ -91,44 +88,12 @@ export default {
 
         // TODO: Pagination?
     },
-
-    data: () => ({
-        error: false,
-        loading: true,
-        result: false,
-    }),
-
-    created() {
-        this.load();
-    },
     computed: {
         outerComponent() {
             return this.cards ? 'n4ja-card' : 'div'
         },
         innerComponent() {
             return this.cards ? 'n4ja-card-body' : 'template'
-        },
-    },
-
-    methods: {
-        load() {
-            this.result = false;
-            this.error = false;
-            this.loading = true;
-
-            this.$neo4j.run(this.cypher, this.params)
-                .then(res => this.result = res)
-                .catch(e => this.error = e)
-                .finally(() => this.loading = false)
-        },
-    },
-
-    watch: {
-        query() {
-            this.load();
-        },
-        params() {
-            this.load();
         },
     },
 }

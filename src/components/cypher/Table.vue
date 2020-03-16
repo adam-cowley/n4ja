@@ -12,6 +12,7 @@
             :columns="columns"
             :index="index"
             :noResults="noResults"
+            :actions="actions"
         />
 
         <div class="no-results" v-if="result && !result.records.length" v-html="noResults" />
@@ -19,9 +20,11 @@
 </template>
 
 <script>
+import CypherMixins from './CypherMixins'
+
 export default {
     name: 'n4ja-cypher-table',
-
+    mixins: [ CypherMixins, ],
     props: {
         context: {
             type: [ String, Array, ],
@@ -29,8 +32,6 @@ export default {
             default: () => ['n4ja-table'],
         },
 
-        cypher: String,
-        
         columns: {
             type: Array,
             description: 'Columns to pull from each row and display in result',
@@ -45,36 +46,13 @@ export default {
             default: 'There are no results for this query',
         },
 
+        actions: {
+            type: [ Array, Function ],
+            description: 'Actions to append to the end of a table row {to, text, onClick, icon, class}',
+            default: () => [],
+        },
+
         // TODO: Pagination?
-    },
-
-    data: () => ({
-        error: false,
-        loading: true,
-        result: false,
-    }),
-
-    created() {
-        this.load();
-    },
-
-    methods: {
-        load() {
-            this.result = false;
-            this.error = false;
-            this.loading = true;
-
-            this.$neo4j.run(this.cypher)
-                .then(res => this.result = res)
-                .catch(e => this.error = e)
-                .finally(() => this.loading = false)
-        },
-    },
-
-    watch: {
-        query() {
-            this.load();
-        },
     },
 }
 </script>

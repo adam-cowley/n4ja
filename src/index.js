@@ -7,9 +7,7 @@ import * as components from './components';
 import './scss/n4ja.scss';
 
 // Defaults
-const N4ja = {
-
-};
+const N4ja = {};
 
 const defaultOptions = {
     flavour: 'bootstrap', // Or "semantic" - not really important at the moment
