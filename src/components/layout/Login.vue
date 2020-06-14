@@ -27,7 +27,7 @@
                 </div>
                 <div class="database" v-if="showDatabase">
                     <label for="database" class="sr-only">Database</label>
-                    <input v-model="ldatabase" id="database" class="form-control" placeholder="Database" required>
+                    <input v-model="ldatabase" id="database" class="form-control" placeholder="Database">
                 </div>
                 <div class="full">
                     <label for="username" class="sr-only">Username</label>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { log } from 'util';
 export default {
     name: 'n4ja-login',
     props: {
@@ -129,6 +130,7 @@ export default {
     methods: {
         handleLogin() {
             this.loading = true;
+            console.log(this.lprotocol, this.lhost, this.lport, this.lusername, this.lpassword, this.ldatabase, this.encrypted)
             this.$neo4j.connect(this.lprotocol, this.lhost, this.lport, this.lusername, this.lpassword, this.ldatabase, this.encrypted)
                 .then(driver => {
                     const query = this.ldatabase === 'system' ? 'SHOW DATABASES' : 'MATCH (n) RETURN count(n)'

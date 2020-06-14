@@ -146,7 +146,7 @@ export default {
         database: {
             type: String,
             description: 'Neo4j Database (4.0+)',
-            default: 'neo4j',
+            default: undefined,
         },
         username: {
             type: String,
